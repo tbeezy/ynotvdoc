@@ -1,0 +1,65 @@
+---
+title: Welcome to ynoTV
+description: A modern, feature-rich FOSS IPTV player
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+ynoTV is a modern, feature-rich FOSS IPTV player built with Tauri and React. Stream live TV, manage multiple sources, record shows, and track your favorite sports teams.
+
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin:1.5rem 0;">
+  <iframe
+    src="https://streamable.com/e/jxjq9n"
+    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+    allowfullscreen
+    loading="lazy"
+  ></iframe>
+</div>
+
+## Get Started
+
+<CardGrid stagger>
+	<Card title="Getting Started" icon="rocket">
+		[Start here](/getting-started/) to set up ynoTV on your device.
+	</Card>
+	<Card title="Sources" icon="database">
+		[Add M3U, Xtream Codes, or Stalker](/guides/sources/) sources.
+	</Card>
+	<Card title="DVR" icon="video">
+		[Record live TV](/guides/dvr/) to watch later.
+	</Card>
+</CardGrid>
+
+## Features
+
+<CardGrid stagger>
+	<Card title="Live TV" icon="play">
+		Stream live channels with hardware-accelerated playback via mpv.
+	</Card>
+	<Card title="Multiview" icon="grid">
+		[Watch multiple streams](/guides/multiview/) simultaneously.
+	</Card>
+	<Card title="EPG Guide" icon="calendar">
+		Full electronic program guide with 7-day data.
+	</Card>
+	<Card title="Sports Hub" icon="football">
+		[Live scores and schedules](/guides/sports-hub/) from ESPN.
+	</Card>
+	<Card title="TV Calendar" icon="date">
+		[Track favorite shows](/guides/tv-calendar/) and episodes.
+	</Card>
+	<Card title="40+ Themes" icon="palette">
+		Customize the look with built-in themes.
+	</Card>
+</CardGrid>
+
+## Supported Sources
+
+- **M3U/M3U8** - Standard playlists from URL or file
+- **Xtream Codes** - Full API support with VOD and Series
+- **Stalker Portal** - MAC address authentication
+- **EPG Only** - Standalone XMLTV guide data

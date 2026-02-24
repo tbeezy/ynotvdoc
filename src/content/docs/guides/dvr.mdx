@@ -1,0 +1,59 @@
+---
+title: DVR & Recording
+description: Managing live TV recordings, schedules, and storage in ynoTV
+---
+
+import {
+  Aside,
+  Tabs,
+  TabItem
+} from '@astrojs/starlight/components';
+
+ynoTV includes a high-performance Digital Video Recorder (DVR) system, allowing you to archive live streams for later viewing without quality loss.
+
+<Aside type="caution">
+DVR functionality requires **FFmpeg** to be installed on your system. ynoTV will attempt to auto-detect your local FFmpeg installation on startup.
+</Aside>
+
+## Recording Methods
+
+<Tabs>
+<TabItem label="Quick Record">
+
+Record the current stream instantly with a single click.
+1. During playback, click the **Record** icon in the player controls.
+2. Specify the recording duration.
+3. The recording will start immediately and automatically stop once the time limit is reached.
+
+</TabItem>
+<TabItem label="EPG Scheduling">
+
+Plan ahead by scheduling recordings from the guide.
+1. Right-click any upcoming program in the **EPG**.
+2. Select **Schedule Recording**.
+3. You can choose to record a **Single Episode** or create a recurring schedule for a **Series**.
+
+</TabItem>
+<TabItem label="Manual Schedule">
+
+For specific time blocks:
+1. Right-click any channel in the list.
+2. Select **Schedule Recording**.
+3. Manually define the start time and duration.
+
+</TabItem>
+</Tabs>
+
+## Recording Management
+
+Access the **DVR Dashboard** (Key: `R`) to view active, scheduled, and completed recordings.
+
+### Start/End Padding
+To ensure you never miss the beginning or end of a program (common in live sports), you can adjust "Padding" for any scheduled recording:
+- **Start Padding**: Extra time recorded before the official start.
+- **End Padding**: Extra time recorded after the official end.
+
+These can be adjusted globally in **Settings** or on a per-recording basis via the **DVR Page**.
+
+### Active Controls
+While a recording is in progress, you can monitor its status via the dashboard or stop it manually at any time. Completed files are stored in your configured recording path and can be played directly through the ynoTV interface.

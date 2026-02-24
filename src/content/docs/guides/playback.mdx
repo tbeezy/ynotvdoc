@@ -1,0 +1,68 @@
+---
+title: Playback Configuration
+description: Optimizing stream performance and hardware acceleration with MPV flags
+---
+
+import {
+  Aside,
+  Tabs,
+  TabItem
+} from '@astrojs/starlight/components';
+
+ynoTV utilizes the powerful **MPV** engine for media playback. While the default settings are optimized for a broad range of hardware, you can apply custom flag parameters in **Settings** > **Playback** to fine-tune your experience.
+
+## Hardware Acceleration
+
+Hardware decoding significantly reduces CPU usage by offloading video processing to your GPU. 
+
+### Recommended Decoding Flags
+```bash
+# General recommendation: Auto-detects the best available decoder
+--hwdec=auto
+```
+
+If "auto" causes stability issues, use these overrides:
+
+<Tabs>
+<TabItem label="Windows (Direct3D)">
+```bash
+--hwdec=d3d11va
+--gpu-api=d3d11
+```
+</TabItem>
+<TabItem label="Nvidia (Performance)">
+```bash
+--hwdec=nvdec
+--vo=gpu
+--gpu-api=vulkan
+```
+</TabItem>
+</Tabs>
+
+## Optimization Tiers
+
+### Tier 1: Essential Stability
+Add these flags immediately to improve stream buffering and network resilience:
+```bash
+--vo=gpu                           # High-performance GPU rendering
+--cache=yes                        # Enable stream buffering
+--demuxer-max-bytes=50MiB          # Buffer 50MB of data ahead
+--demuxer-max-back-bytes=10MiB     # Keep 10MB in memory for quick seeks
+--network-timeout=10               # Prevent hanging on dead connections
+--user-agent="Mozilla/5.0"         # Avoid blocks from strict providers
+```
+
+### Tier 2: Stream Reliability
+Prevent common IPTV issues like audio drift and connection drops:
+```bash
+--stream-lavf-o=reconnect=1        # Auto-reconnect on drop
+--stream-lavf-o=reconnect_streamed=1
+--stream-lavf-o=reconnect_delay_max=5
+--video-sync=display-resample      # Maintain perfect audio/video sync
+--audio-stream-silence=yes         # Prevent clicks during audio underruns
+--deinterlace=auto                 # Fix quality on older broadcast content
+```
+
+<Aside type="caution">
+Incorrect MPV flags can cause playback to fail. If you experience issues after adding custom flags, clear the text field in Settings to return to defaults.
+</Aside>

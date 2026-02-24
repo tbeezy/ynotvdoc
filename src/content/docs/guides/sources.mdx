@@ -1,0 +1,71 @@
+---
+title: Source Management
+description: Comprehensive guide to adding and managing IPTV sources in ynoTV
+---
+
+import {
+  Card,
+  CardGrid,
+  Tabs,
+  TabItem,
+  Badge,
+  Aside
+} from '@astrojs/starlight/components';
+
+ynoTV provides a robust engine for managing multiple IPTV sources. Whether you use standard playlists or premium API-based services, the application ensures a stable and high-performance streaming experience.
+
+## Feature Overview
+
+| Feature | Description |
+|---------|-------------|
+| **Multi-format Support** | Full compatibility with M3U/M3U8 playlists, Xtream Codes API, and Stalker Portal (MAC address) integration. |
+| **EPG Integration** | Built-in Electronic Program Guide support with the ability to configure dedicated XMLTV sources for any playlist. |
+| **Backup Credentials** | Assign secondary MAC addresses or fallback credentials to any provider for seamless one-click failover. |
+| **Custom User-Agents** | Configure unique User-Agent strings per source to ensure maximum compatibility with various providers. |
+| **Source Insights** | Instantly view channel, movie, and series counts for each playlist via the Source Overview dashboard. |
+| **Connection Monitoring** | Track active vs. maximum allowed connections and account expiration dates in real-time. |
+
+## Adding a Source
+
+Access the **Settings** panel (Key: `,`) and navigate to the **Sources** tab to manage your providers.
+
+<Tabs>
+<TabItem label="M3U Playlist">
+
+1. Select **Add Source** > **M3U Playlist**.
+2. **Details**: Provide a descriptive name and the playlist URL (or import a local `.m3u` file).
+3. **EPG**: Link a separate XMLTV URL if not already embedded in the playlist headers.
+4. **Finalize**: Click **Add Source** and then **Sync Channels** to populate your guide.
+
+</TabItem>
+<TabItem label="Xtream Codes">
+
+1. Select **Add Source** > **Xtream Codes**.
+2. **Credentials**: Enter the Host URL, Username, and Password provided by your service.
+3. **Validation**: Use the **Test Connection** button to verify your credentials.
+4. **Finalize**: Click **Add Source** followed by **Sync Channels**.
+
+</TabItem>
+<TabItem label="Stalker Portal">
+
+1. Select **Add Source** > **Stalker Portal**.
+2. **Configuration**: Enter the Portal URL and your specific MAC Address.
+3. **Authentication**: ynoTV handles automatic token management for secure, persistent sessions.
+4. **Finalize**: Click **Add Source** and **Sync Channels**.
+
+</TabItem>
+</Tabs>
+
+## Professional Management
+
+### Advanced Configuration
+For advanced users, each source card offers deep customization:
+- **Priority Order**: Drag and drop sources in the Settings page to define their global sort order.
+- **Connection Failover**: Add backup credentials to ensure uninterrupted service if a primary MAC address or account is flagged.
+- **Diagnostic Tools**: View real-time metadata including connection limits and provider-side expiration dates.
+
+### Playlist Refinement
+Beyond adding sources, you can refine how content is presented:
+- **Filtering**: Apply filter words (e.g., "US") to strip repetitive prefixes from channel names automatically.
+- **Direct Editing**: Right-click any source in the **Live TV** view to quickly jump to provider settings or category management.
+- **Global Sync**: Use the **Refresh** icon to manually reload data, ensuring your guide is always up-to-date with the latest provider changes.

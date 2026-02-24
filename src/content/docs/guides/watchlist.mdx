@@ -1,0 +1,31 @@
+---
+title: Watchlist & Notifications
+description: Never miss a program with ynoTV's Watchlist and automated reminders
+---
+
+import {
+  Aside
+} from '@astrojs/starlight/components';
+
+The Watchlist is your personal dashboard for upcoming programs. It integrates directly with the Electronic Program Guide (EPG) to provide timely notifications and automated channel switching.
+
+## Managing Your Watchlist
+
+### Adding Programs
+To track a show, open the **Guide (G)**, find the upcoming program, and select **Add to Watchlist** from the right-click context menu.
+
+### Reminder Settings
+When adding a program, you can customize how ynoTV handles the start time:
+- **Notification Lead Time**: Set a reminder to trigger a specific number of minutes before the program begins.
+- **Auto-Switch**: Enable this option to have ynoTV automatically tune into the correct channel as soon as the program starts.
+
+<Aside type="note">
+Watchlist notifications appear as a non-intrusive overlay and will automatically dismiss after 10 seconds if no action is taken.
+</Aside>
+
+## Interactive Notifications
+
+When a Watchlist reminder triggers:
+1. **Visual Alert**: A notification pops up with the program title and channel.
+2. **Quick Action**: Click the notification to immediately switch to that channel.
+3. **Smart Handling**: If **Auto-Switch** is enabled, the player will transition to the new stream without requiring manual confirmation.

@@ -1,0 +1,40 @@
+---
+title: Multiview Layouts
+description: Watching multiple streams simultaneously with ynoTV’s Multiview
+---
+
+import {
+  Aside
+} from '@astrojs/starlight/components';
+
+Multiview allows you to monitor up to four streams at once, perfect for tracking multiple games or news cycles simultaneously.
+
+## Layout Modes
+
+ynoTV supports four distinct viewing modes:
+1. **Main View**: Standard single-channel playback.
+2. **Picture-in-Picture**: A large primary screen with a small secondary overlay.
+3. **Big + Bottom Bar**: A large main view with a horizontal bar for rapid secondary channel access.
+4. **2x2 Grid**: Four equal-sized screens for balanced monitoring.
+
+## Using Multiview
+
+### Adding Channels
+1. Switch to a Multiview layout (Modes 2, 3, or 4).
+2. Navigate the **Live TV** or **EPG** lists.
+3. Right-click a channel and select **Send to Slot #** (e.g., Send to Slot 2).
+
+### Interaction & Controls
+- **Swap Screens**: Click on any secondary screen to instantly swap its stream with the main primary window.
+- **Audio Control**: Each screen can be independently muted or unmuted.
+- **Seamless Switching**: If you return to Main View and then back to a Multiview grid, ynoTV will resume playback of your previously viewed channels in their respective slots.
+
+## Persistence & Startup
+
+In **Settings** > **Startup**, you can enable advanced persistence:
+- **Remember Last Viewed**: Automatically saves the stream playing in each screen.
+- **Reopen Last on Startup**: If enabled, ynoTV will launch directly into your last used Multiview layout and autoplay all saved streams.
+
+<Aside type="tip">
+Use the numeric keys `1` through `4` to quickly toggle between different layout modes.
+</Aside>

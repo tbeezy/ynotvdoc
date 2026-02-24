@@ -1,0 +1,48 @@
+---
+title: About ynoTV
+description: Legal disclaimer and project credits for ynoTV
+---
+
+import {
+  Tabs,
+  TabItem,
+  Card,
+  Aside
+} from '@astrojs/starlight/components';
+
+Learn more about the project, its foundations, and legal information.
+
+<Tabs>
+  <TabItem label="Disclaimer" icon="warning">
+    <Aside type="caution" title="Legal Notice">
+      ynoTV is a media player only. It does not provide, host, distribute, or facilitate access to any streaming services, broadcast content, channel lists, or IPTV subscriptions of any kind.
+    </Aside>
+
+    All content, streams, and playlists are sourced, configured, and managed solely by the end user. The developers have no knowledge of, control over, or responsibility for any third-party content accessed through the application.
+
+    Users are solely responsible for ensuring that any content they access complies with the laws and regulations applicable in their jurisdiction. The developers do not condone or support the use of this application to access unlicensed or unauthorized content.
+
+    ### Metadata Attribution
+    Metadata displayed within the application is sourced from publicly available third-party databases including **TVMaze** and **TMDB**. ynoTV does not claim ownership of this metadata.
+  </TabItem>
+
+  <TabItem label="Credits" icon="star">
+    ynoTV is a collaborative effort built on the shoulders of incredible open-source projects and services:
+
+    <Card title="Foundations" icon="rocket">
+      - **sbtlTV** — The original foundation of the project.
+      - **Tauri** — The high-performance desktop application framework.
+    </Card>
+
+    <Card title="Core Engine" icon="play">
+      - **mpv** — The powerful video playback engine.
+      - **FFmpeg** — Handles recording and thumbnail generation.
+      - **React** — Foundations for the modern UI library.
+    </Card>
+
+    <Card title="Data & Metadata" icon="database">
+      - **TVMaze** — Provides TV schedule and show metadata.
+      - **TMDB** — The source for movie and series metadata.
+    </Card>
+  </TabItem>
+</Tabs>

@@ -1,0 +1,111 @@
+---
+title: Getting Started
+description: Get up and running with ynoTV
+---
+
+import {
+  Card,
+  CardGrid,
+  Tabs,
+  TabItem,
+  Badge,
+  Aside
+} from '@astrojs/starlight/components';
+
+Welcome to ynoTV! A modern, feature-rich FOSS IPTV player built with Tauri and React.
+
+## Installation
+
+Download the latest release from GitHub:
+
+[Download from GitHub Releases](https://github.com/tbeezy/ynotv/releases)
+
+### Windows Installation
+
+- `ynoTV_x.x.x_x64-setup.exe` - NSIS installer (recommended)
+- `ynoTV_x.x.x_x64_en-US.msi` - MSI installer
+
+### Install and Run
+
+1. Run the downloaded installer
+2. Follow the installation prompts
+3. Launch ynoTV
+
+## First Run Setup
+
+Click the **cogwheel icon** on the top right to open Settings.
+
+### Recommended Settings for Best Experience
+
+<CardGrid>
+	<Card title="Theme" icon="palette">
+		Choose a theme that best fits your style. ynoTV offers 40+ built-in themes including dark and light modes, glassmorphism effects, and vibrant neon options.
+	</Card>
+	<Card title="UI" icon="monitor">
+		Customize your interface: enable/disable sidebar, set default resolution, adjust font size for Live TV.
+	</Card>
+	<Card title="Startup" icon="rocket">
+		Configure startup behavior: remember channels for multiview, reopen last view on launch.
+	</Card>
+	<Card title="Shortcuts" icon="keyboard">
+		Set keyboard shortcuts to your preference. All keybindings are fully customizable.
+	</Card>
+	<Card title="DVR" icon="video">
+		Set the storage path for your recordings before using the DVR feature.
+	</Card>
+</CardGrid>
+
+## Adding Your First Source
+
+After configuring settings, add your IPTV source.
+
+<Tabs>
+<TabItem label="M3U Playlist">
+
+1. In Settings, go to **Sources** tab
+2. Click **+ Add Source**
+3. Select **M3U Playlist**
+4. Enter a name and playlist URL (or import from file)
+5. Click **Add Source**
+6. Click **Sync Channels**
+
+</TabItem>
+<TabItem label="Xtream Codes">
+
+1. In Settings, go to **Sources** tab
+2. Click **+ Add Source**
+3. Select **Xtream Codes**
+4. Enter Host URL, Username, and Password
+5. Click **Add Source**
+6. Click **Sync Channels**
+
+</TabItem>
+<TabItem label="Stalker Portal">
+
+1. In Settings, go to **Sources** tab
+2. Click **+ Add Source**
+3. Select **Stalker Portal**
+4. Enter Portal URL and MAC Address
+5. Click **Add Source**
+6. Click **Sync Channels**
+
+</TabItem>
+</Tabs>
+
+
+## Next Steps
+
+<CardGrid>
+	<Card title="Sources" icon="settings">
+		Learn how to add M3U, Xtream Codes, and Stalker sources.
+	</Card>
+	<Card title="DVR" icon="video">
+		Set up recording to watch content later.
+	</Card>
+	<Card title="Multiview" icon="grid">
+		Watch multiple streams simultaneously.
+	</Card>
+	<Card title="Shortcuts" icon="keyboard">
+		Master all keyboard controls for efficient navigation.
+	</Card>
+</CardGrid>
