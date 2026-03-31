@@ -1,0 +1,75 @@
+---
+title: Time Shift
+description: Watch past programs and pause live TV with Time Shift and Catchup
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+**Time Shift** and **Catchup** allow you to watch live TV on your terms. Pause, rewind, or jump back to a program that aired earlier in the day.
+
+## Using Time Shift
+
+When watching a channel that supports Time Shift, you'll see a scrubber in the **Now Playing** bar.
+
+<CardGrid>
+  <Card title="Pause & Resume" icon="play">
+    Pause live streams and resume when ready.
+  </Card>
+  <Card title="Rewind & Fast Forward" icon="play">
+    Seamlessly navigate within the buffered stream.
+  </Card>
+</CardGrid>
+
+## Cache-Based Time Shift
+
+Enhance your Time Shift experience with local caching for smoother playback and reduced latency.
+
+### Configuration
+
+Enable and customize the cache settings through the following path:
+
+**Settings Path**
+:   Navigate to **Settings → Cache**
+
+**Cache Activation**
+:   Toggle the cache feature to enable RAM-based buffering of your currently active channel
+
+**Cache Size Allocation**
+:   Specify the amount of system memory (RAM) dedicated to the cache buffer. The cache automatically resets upon each channel change to optimize memory utilization.
+
+**Go Live Buffer**
+:   Configure a safety buffer for the **Go Live** button functionality. When enabled, this setting pre-buffers content ahead of the live stream position by your specified duration (in seconds). This prevents playback stalls when attempting to return to live broadcast during network fluctuations or when the buffer is too close to the current stream position.
+
+## Catchup TV
+
+Many providers offer **Catchup** support, allowing you to watch programs that have already finished.
+
+### Browsing Catchup Content
+
+Access Catchup content through the Electronic Program Guide:
+
+1. Navigate to the **EPG Guide**.
+2. Look for the **Catchup icon** next to channel names or program titles.
+3. Select any past program to begin playback.
+
+### Viewing Options
+
+**Live Stream Access**
+:   Select the channel name (rather than a specific program) to view the current live broadcast directly
+
+**Program Start Playback**
+:   Click on any currently airing program to jump to its beginning and watch from the start
+
+**Return to Live**
+:   Click the **Go Live** button to return to the current live position of the broadcast
+
+**Playback Mode Selection**
+:   Switch between the provider's Catchup stream and your local cache-based Time Shift as needed for optimal viewing experience
+
+<Aside type="note">
+  Time Shift and Catchup require support from your IPTV provider. Ensure your provider offers these features in their service plan.
+</Aside>

@@ -1,0 +1,52 @@
+---
+title: EPG Editor
+description: Customize and override channel data in the Electronic Program Guide
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+The **EPG Editor** allows you to fine-tune your channel data and Electronic Program Guide display. It provides tools for overriding broken logos and ensuring your guide remains accurate and visually consistent.
+
+## Custom Logo Overrides
+
+If a provider's channel logo is missing, low-resolution, or outdated, you can easily override it.
+
+<CardGrid>
+  <Card title="Easy Overrides" icon="image">
+    Copy and paste any image URL into the editor to immediately update a channel's logo.
+  </Card>
+  <Card title="Global Display" icon="tv">
+    Logo overrides are instantly reflected across the Live TV, EPG, and Now Playing views.
+  </Card>
+</CardGrid>
+
+## How to Use the EPG Editor
+
+To access the EPG Editor, right-click any channel and select **Edit EPG**. This opens the editor for the selected channel, where you can customize the following:
+
+### Channel Configuration
+
+- **TVG-ID Assignment**: Map the channel to a different XMLTV identifier to correct or change the program guide source
+- **Logo Override**: Replace the default channel logo with a custom image URL
+- **EPG Time Shift**: Adjust the guide data forward or backward to account for timezone differences or schedule offsets
+
+### Program Management
+
+In the **Programs** tab, you can directly manage the Electronic Program Guide data:
+
+- Edit existing program details
+- Remove unwanted entries
+- Add new programs manually
+- Undo accidental deletions
+
+### EPG Search & Assignment
+
+The **EPG Search** feature enables you to:
+
+- Search through available TVG-IDs across all configured sources
+- Assign the channel to a different EPG source by selecting an alternative TVG-ID
+- When **All Sources** is selected, you can map the channel to EPG data from any available source in your configuration

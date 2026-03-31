@@ -1,0 +1,68 @@
+---
+title: VOD & Series
+description: Manage and browse Video on Demand content in ynoTV
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside,
+  Tabs,
+  TabItem
+} from '@astrojs/starlight/components';
+
+ynoTV includes a high-performance, native Rust engine specifically optimized for synchronizing and browsing massive VOD (Video on Demand) libraries.
+
+## Native VOD Sync Engine
+
+The latest version of ynoTV features a rewritten synchronization engine that eliminates latency bottlenecks when handling large providers.
+
+<CardGrid>
+  <Card title="Lightning Fast" icon="rocket">
+    Synchronize over 190,000+ VOD items in under 15 seconds.
+  </Card>
+  <Card title="Low Resource Usage" icon="rocket">
+    Optimized data parsing and bulk database insertion for minimal CPU and memory impact.
+  </Card>
+</CardGrid>
+
+## Browsing Movies & Series
+
+Access your VOD content directly from the sidebar or via the dedicated **Movies** and **Series** views.
+
+### Features
+- **Smart Metadata**: Automatic integration with TMDB for posters, ratings, and plot summaries.
+- **Search & Discovery**: Instantly find any title across all your connected sources.
+
+<Aside type="tip">
+  Configure your TMDB API key in **Settings > TMDB** to enable rich metadata and high-quality posters for your VOD library.
+</Aside>
+
+## Category Management
+
+Streamline your VOD browsing experience by organizing which content categories appear in your Movies and Series views.
+
+**Access Method**
+:   Right-click any source in the **Movies** or **Series** view and select **Manage VOD Categories**
+
+**Hide Categories**
+:   Selectively disable categories to exclude them from your browsing interface. Hidden categories will not display content in category views and their items will be excluded from search results, providing a cleaner, more focused content discovery experience.
+
+## Progress Tracking
+
+Maintain your viewing history automatically with the Recently Watched feature, which tracks playback progress across all movies and series.
+
+**Tracking Mechanism**
+:   Progress is automatically saved to the **Recently Watched** list on both the Home page and the Recent tab
+
+**Update Frequency**
+:   - Automatic updates every 30 seconds during active playback
+   - Immediate save when pressing **Stop** or switching to Live TV
+
+**Progress Threshold**
+:   Watch progress is only recorded when viewing is between **5% and 95%** completion. This prevents saving entries for briefly sampled content while ensuring significant viewing sessions are tracked
+
+VOD and Series browsing is currently supported for:
+- **Xtream Codes** (Native API support)
+- **Stalker Portals**
+- **Local M3U Playlists** (Partial support via groups)

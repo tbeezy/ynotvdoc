@@ -1,0 +1,121 @@
+---
+title: Live TV
+description: Navigation and playback features for the Live TV experience
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+**Live TV** is the core of ynoTV. Stream your favorite channels, browse categories, and manage multiple views all in one place.
+
+## Playback Experience
+
+ynoTV uses a custom high-performance player engine built on top of **mpv** for low-latency, hardware-accelerated playback.
+
+<CardGrid stagger>
+  <Card title="Quick Switching" icon="refresh">
+    Easily switch between channels and categories without interrupting current playback.
+  </Card>
+  <Card title="Unified Guide" icon="calendar">
+    Access the Electronic Program Guide without stopping what you're watching.
+  </Card>
+  <Card title="Hardware Acceleration" icon="rocket">
+    Leverage your device's GPU for crystal-clear, smooth HD and 4K streams.
+  </Card>
+</CardGrid>
+
+## EPG Display Customization
+
+Customize the Electronic Program Guide interface to enhance visibility and control.
+
+### Enhanced Program Highlight
+
+Improve the visual distinction of currently airing programs in the EPG for better readability.
+
+**Configuration Path**
+:   Navigate to **Settings → Live TV → EPG Display**
+
+**Enable Darker Highlight**
+:   Activate the option to deepen the highlight color on current program blocks, providing stronger visual contrast against non-airing content
+
+### Mini Media Control Bar
+
+Add playback controls directly to the EPG preview window for convenient operation without switching views.
+
+**Configuration Path**
+:   Navigate to **Settings → Live TV**
+
+**Enable Mini Media Bar**
+:   Toggle the **Mini Media Bar for EPG Preview** to display play/pause and volume controls overlay on the preview video
+
+### Alternative EPG Layout
+
+Switch between traditional and modern EPG layouts based on your preference.
+
+**Configuration Path**
+:   Navigate to **Settings → Live TV → EPG View Layout**
+
+**Select Layout**
+:   Choose **Alternate EPG View** to enable a different interface arrangement
+
+**Quick Toggle**
+:   Press **E** to instantly switch between the Traditional and Alternate EPG views
+
+## Navigating Live TV
+
+### Channel List & Categories
+The **Live TV** view summarizes all available content for your currently active source.
+
+1. **Browse Categories**: Use the sidebar to jump to different genres (Sports, News, Movies, etc.).
+2. **Search**: Instantly find channels by name or provider category.
+3. **Favorites**: Mark any channel as a favorite for quick access from the **Watchlist**.
+
+### Multiple Views
+Watch up to four streams at once with our [Multiview Layouts](./multiview/).
+
+## Interface Controls
+
+### Channel & Category List
+Access your complete channel lineup through multiple methods:
+
+**Navigation Button**
+:   Click **Live TV** in the header to open the channel and category panel
+
+**Keyboard Shortcut**
+:   Press **L** (default) for instant access to the channel list
+
+**Toggle Panels**
+:   - **C** — Show or hide the Categories sidebar
+   - **G** — Show or hide the Electronic Program Guide
+
+### Preview Screen Management
+Customize the preview window to your viewing preference:
+
+**Resizing**
+:   Drag from the bottom-right corner of the preview to expand the window diagonally
+
+**Reset to Default**
+:   Right-click the bottom-right corner to restore the preview to its standard dimensions
+
+**Fullscreen Activation**
+:   - Double-click any channel in the list to close the guide and display the stream in fullscreen mode within the application
+   - Double-click the preview video directly to achieve the same result
+
+### Context Menu Options
+
+**Source Management**
+:   Right-click any source in the category list to access **Manage Categories**, allowing you to enable or disable specific category groupings for streamlined browsing
+
+**Channel Actions**
+:   Right-click any channel to reveal a contextual menu with the following capabilities:
+   - **Record** — Initiate a scheduled recording with custom parameters
+   - **Quick Record** — Start an immediate recording using default settings
+   - **Add to Custom Group** — Organize channels into personalized collections
+   - **Copy Stream URL** — Copy the direct stream address to your clipboard
+
+<Aside type="tip">
+  Right-click any channel in the list to access the **EPG Editor**, **Source Settings**, or **Recording** options.
+</Aside>

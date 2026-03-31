@@ -23,6 +23,10 @@ export default defineConfig({
 					label: 'Guides',
 					items: [
 						{ label: 'Source Management', slug: 'guides/sources' },
+						{ label: 'Live TV Playback', slug: 'guides/live-tv' },
+						{ label: 'VOD & Series', slug: 'guides/vod' },
+						{ label: 'EPG Editor', slug: 'guides/epg-editor' },
+						{ label: 'Time Shift & Catchup', slug: 'guides/time-shift' },
 						{ label: 'Custom Groups & Playlists', slug: 'guides/playlists' },
 						{ label: 'Watchlist & Notifications', slug: 'guides/watchlist' },
 						{ label: 'TV Calendar', slug: 'guides/tv-calendar' },
@@ -32,6 +36,7 @@ export default defineConfig({
 						{ label: 'Search & Discovery', slug: 'guides/search' },
 						{ label: 'Playback & MPV', slug: 'guides/playback' },
 						{ label: 'Keyboard Shortcuts', slug: 'guides/shortcuts' },
+						{ label: 'Tips & Tricks', slug: 'guides/tips' },
 						{ label: 'Settings', slug: 'guides/settings' },
 					],
 				},
