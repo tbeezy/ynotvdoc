@@ -26,6 +26,7 @@ export default defineConfig({
 						{ label: 'Live TV Playback', slug: 'guides/live-tv' },
 						{ label: 'VOD & Series', slug: 'guides/vod' },
 						{ label: 'EPG Editor', slug: 'guides/epg-editor' },
+						{ label: 'Automatic Stream Fallback', slug: 'guides/failover-group' },
 						{ label: 'Time Shift & Catchup', slug: 'guides/time-shift' },
 						{ label: 'Custom Groups & Playlists', slug: 'guides/playlists' },
 						{ label: 'Watchlist & Notifications', slug: 'guides/watchlist' },

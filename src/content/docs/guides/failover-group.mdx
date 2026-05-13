@@ -1,0 +1,27 @@
+---
+title: Automatic Stream Fallback
+description: Manage failover groups for uninterrupted streaming
+---
+
+The **Failover Group** feature ensures uninterrupted streaming by automatically switching to backup channels when a channel in a Failover group is stalled/dead.
+
+## Overview
+
+Failover groups allow you to organize multiple channels broadcasting the same feed into a single logical group. During playback, if the active channel's stream becomes stalled or interrupted, ynoTV automatically swaps to the next available channel within the group. Additionally, an overlay appears in the bottom-right corner, providing quick manual access to switch between channels in the Failover Group at any time.
+
+## Creating a Failover Group
+
+1. Navigate to **Live TV** → **Failover Group** button.
+2. Click **+ Create New Group**.
+3. Enter a name and click **Create**.
+4. Click the newly created group and add channels to it.
+
+You can also right-click any channel → **Add to Failover Group** to create a new group or add to an existing one.
+
+## Managing Failover Groups
+
+You can edit, reorder, or delete failover groups at any time from the **Failover Group** button. Reordering changes what plays next when a channel fails.
+
+## Behavior
+
+When a channel fails to load from the primary source, ynoTV will automatically try the next source in the failover group. This process is seamless and requires no manual intervention.
