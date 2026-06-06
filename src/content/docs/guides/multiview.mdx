@@ -11,11 +11,12 @@ Multiview allows you to monitor up to four streams at once, perfect for tracking
 
 ## Layout Modes
 
-ynoTV supports four distinct viewing modes:
+ynoTV supports five distinct viewing modes:
 1. **Main View**: Standard single-channel playback.
 2. **Picture-in-Picture**: A large primary screen with a small secondary overlay.
-3. **Big + Bottom Bar**: A large main view with a horizontal bar for rapid secondary channel access.
-4. **2x2 Grid**: Four equal-sized screens for balanced monitoring.
+3. **Side by Side**: Two 16:9 players side by side.
+4. **Big + Bottom Bar**: A large main view with a horizontal bar for rapid secondary channel access.
+5. **2x2 Grid**: Four equal-sized screens for balanced monitoring.
 
 ## Using Multiview
 
@@ -28,6 +29,14 @@ ynoTV supports four distinct viewing modes:
 - **Swap Screens**: Click on any secondary screen to instantly swap its stream with the main primary window.
 - **Audio Control**: Each screen can be independently muted or unmuted.
 - **Seamless Switching**: If you return to Main View and then back to a Multiview grid, ynoTV will resume playback of your previously viewed channels in their respective slots.
+
+## HLS Multiview
+
+Multiview now includes an option to choose between **MPV** or **HLS** as the playback container. Switch to HLS if your system struggles with multiple MPV instances or if you need overlay support.
+
+<Aside type="tip">
+HLS mode can reduce system resource usage and enables on-screen overlays that are not available when using multiple MPV processes.
+</Aside>
 
 ## Persistence & Startup
 

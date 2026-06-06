@@ -1,7 +1,13 @@
 ---
-title: Popout Player
-description: Stream channels in a dedicated popout MPV window
+title: Popout & External Player
+description: Stream channels via popout MPV window or external player
 ---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
 
 The **Popout Player** allows you to stream channels in a dedicated popout MPV window, providing a separate viewing experience that can be moved, resized, or placed on a second monitor.
 
@@ -16,3 +22,20 @@ The popout window can be configured to stay on top of other windows. Navigate to
 ## Popout Mode for Live TV EPG
 
 Activate **Popout Mode** via the icon on the middle-right of the Live TV EPG. When enabled, all channel selections will be routed directly to the popout player instead of playing in the main interface.
+
+## External Player Support
+
+Any channel can be sent to an external player of your choice. Configure the player under **Settings → Playback → External/Popout Player**.
+
+<CardGrid>
+  <Card title="Right-Click Access" icon="menu">
+    Right-click any channel and select **Send to External Player** to open it in your configured external player.
+  </Card>
+  <Card title="EPG Routing" icon="tv">
+    Click the screen icon in the EPG and set it to **External** to route all playback to your external player by default.
+  </Card>
+</CardGrid>
+
+<Aside type="tip">
+External player support gives you the flexibility to use advanced media players like VLC, MPC-HC, or any other player you prefer for playback.
+</Aside>

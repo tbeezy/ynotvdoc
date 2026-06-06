@@ -1,0 +1,55 @@
+---
+title: Stremio Addons
+description: Manage and configure Stremio add-ons within ynoTV
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+ynoTV now includes dedicated support for Stremio add-ons, allowing you to extend your streaming experience with community-built content sources and utilities. A dedicated **Strem** page has been added to the app for managing everything Stremio-related.
+
+## Getting Started
+
+Navigate to the **Strem** page and click **Manage Add-ons** to browse and install your Stremio add-ons directly within ynoTV.
+
+### Addon URL
+
+Instead of clicking *Install to Stremio* on an add-on's website, copy the **Copy Link / manifest.json** link and use that URL to add it manually in ynoTV.
+
+<CardGrid>
+  <Card title="Easy Management" icon="puzzle">
+    Install, enable, and disable add-ons directly from the Strem page without leaving ynoTV.
+  </Card>
+</CardGrid>
+
+## Stream Badges
+
+Show quality, codec, HDR, and audio badges on stream links to quickly identify the best stream at a glance. You can also import custom badge rules to match your preferences.
+
+<CardGrid>
+  <Card title="Built-in Badges" icon="tag">
+    Automatically display resolution, codec, HDR format, and audio type on every stream link.
+  </Card>
+  <Card title="Custom Rules" icon="file-code">
+    Import your own badge rules using the built-in editor. Create, preview, and apply custom badge configurations.
+  </Card>
+  <Card title="Templates & Examples" icon="external-link">
+    Find ready-to-use templates, an online editor, and examples at the <a href="https://nintle.github.io/Badger/" target="_blank">Badger tool</a>.
+  </Card>
+</CardGrid>
+
+## Strem Settings
+
+### Stream Picker Mode
+
+Choose how streams are handled when playing a movie or series:
+
+- **Show Picker** — Displays a list of available sources so you can select which one to play.
+- **Auto-play** — Automatically plays the first direct stream link when a movie or series is selected, skipping the picker for a faster experience.
+
+## Hide the Strem Tab
+
+If you don't plan on using Stremio add-ons, you can hide the **Strem** tab entirely. Go to **Settings → Navigations** and toggle the Strem tab off.
