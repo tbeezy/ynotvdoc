@@ -1,0 +1,42 @@
+---
+title: Logo Editor
+description: Preview and customize channel logo tile backgrounds and padding per category
+---
+
+import {
+  Aside
+} from '@astrojs/starlight/components';
+
+The **Logo Editor** lets you quickly apply consistent logo tile styling across every channel in a category — no need to edit channels one by one in the EPG Editor.
+
+## Opening the Logo Editor
+
+Right-click any **category** in the Live TV sidebar and select **🖼️ Logo Editor**. The editor opens for that category, showing all of its channels as logo tiles with a live preview.
+
+## What It Does
+
+The editor controls two things per channel:
+
+- **Background** — the tile background behind the logo: **Light**, **Dark**, or **Auto** (automatic luminance detection).
+- **Padding** — the spacing inside the tile: **Normal** (standard 3px) or **No Padding** (edge-to-edge).
+
+These are the same per-logo settings you can set individually in the EPG Editor — the Logo Editor just lets you apply them in bulk.
+
+## Working with Channels
+
+- **Search** — filter the category by channel name.
+- **Filter tabs** — jump to **All**, **Auto**, **Light**, **Dark**, or **No Padding** channels (each with a count) to see exactly which logos already have a background/padding set.
+- **Select** — click tiles to select specific channels (with a running **Selected** count), or **Select All**.
+
+## Applying Changes
+
+Every action can be applied to the **selected channels** or to **all filtered channels**:
+
+- **Background** — *Apply Light* or *Apply Dark*; *Reset to Auto* returns selected/all channels to automatic detection.
+- **Padding** — *Remove Padding* (edge-to-edge) or *Normal Padding* (standard spacing).
+
+Changes are staged until you click **Save Changes** — a prompt warns about **unsaved changes** if you close mid-edit. Close with the ✕ button or **Esc**.
+
+<Aside type="tip">
+Automatic background detection doesn't catch every logo perfectly — if a logo renders with poor contrast, open the Logo Editor and force **Light** or **Dark** for those channels. The same per-logo override can be applied to a single channel via the EPG Editor.
+</Aside>

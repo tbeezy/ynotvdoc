@@ -28,6 +28,7 @@ export default defineConfig({
 						{ label: 'Local Library', slug: 'guides/local-library' },
 						{ label: 'Stremio Addons', slug: 'guides/stremio-addons' },
 						{ label: 'EPG Editor', slug: 'guides/epg-editor' },
+						{ label: 'Logo Editor', slug: 'guides/logo-editor' },
 						{ label: 'Popout & External Player', slug: 'guides/popout-player' },
 						{ label: 'Cast to TV', slug: 'guides/cast-to-tv' },
 						{ label: 'Widgets', slug: 'guides/widgets' },
