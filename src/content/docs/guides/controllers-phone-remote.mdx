@@ -1,0 +1,123 @@
+---
+title: Controllers & Phone Remote
+description: Use a gamepad, an HTPC keyboard remote, or your phone to control ynoTV with spatial navigation, button mapping, and chord combos
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+ynoTV can be driven entirely from a **game controller**, an **HTPC wireless keyboard remote**, or your **phone** — no mouse needed. Everything lives in **Settings → Controllers & Remote**, and all controller features are driven by a single pipeline: a raw button press is mapped through your custom button mappings and chord combos, then executed as a spatial-navigation action across the UI.
+
+## Spatial Navigation
+
+When controller navigation is enabled, ynoTV switches to **spatial navigation**: instead of clicking with a mouse, you move a highlight between on-screen elements with the D-Pad and confirm with buttons.
+
+- **D-Pad / left stick** — move the highlight between elements (channels, menu items, grid tiles).
+- **A (South)** — select / confirm the highlighted element.
+- **B (East)** — back / exit the current view.
+- **Holding a D-Pad direction** repeats the press with an accelerating rate, so holding down will keep moving through lists (the repeat delay and speed are adjustable).
+
+<CardGrid>
+  <Card title="Deadzone" icon="gamepad-2">
+    Adjusts the analog stick deadzone so drifting sticks don't cause unwanted movement.
+  </Card>
+  <Card title="Hold repeat" icon="repeat">
+    Delay before a held D-Pad direction starts repeating, and how fast it repeats while held.
+  </Card>
+  <Card title="Background listening" icon="radio">
+    Keep listening for controller input even when the window isn't focused.
+  </Card>
+</CardGrid>
+
+The **live monitor** panel shows detected gamepads, connection state, and a live button readout as you press them, so you can verify everything is working before navigating.
+
+## Button Mapping
+
+Every physical button on your controller can be remapped. Open **Settings → Controllers & Remote → Configure Gamepad**, then press a button to assign it to any action — the app captures your physical button and binds it to the action you choose.
+
+- Remaps apply **live** on boot and on settings import, and are saved as a **custom profile**.
+- There's a live visualizer that shows your controller graphic lighting up as you press buttons, so you can confirm mappings at a glance.
+- **Reset to Defaults** restores the factory mapping at any time.
+
+## Button Combinations (Chords)
+
+Holding a **modifier** button and pressing another button triggers an extra shortcut — the classic "chord" pattern from console remotes. The modifiers are **L1, R1, L2, R2**.
+
+For example, you could hold **L1** and press **A** to jump straight to Live TV, or hold **R2** and press **Up** to page up the EPG. Open **Button Combinations** to see the full grid and assign each chord to a shortcut action.
+
+## Keyboard as Controller
+
+If you're using an HTPC setup with a wireless keyboard remote (like a Rii-style air mouse), you can bind **physical keyboard keys to pretend to be controller buttons**. The keyboard then drives the *exact same* pipeline as a real gamepad — your button remaps, chord combos, spatial navigation, hold-repeat, and the on-screen visualizer all work identically.
+
+### Getting started
+
+1. Go to **Settings → Controllers & Remote → Keyboard as Controller** and enable it.
+2. **Arrow keys** (D-Pad), **Enter** (A), and **Escape** (B) are pre-bound so it works out of the box.
+3. Click any button card and press the key you want to assign — Ctrl, Shift, and Alt are supported as distinct keys and map cleanly (either side of the key triggers the binding).
+
+### How it behaves
+
+- **Mapped keys take over** — they act as controller buttons and won't double-fire the normal keyboard shortcuts. **Unmapped keys keep their normal behavior.**
+- **Typing always wins** — while focused in a search box, letters and editing keys (Enter, Backspace) keep working normally for typing, while the D-Pad and Escape still act as controller buttons so you can move away from the field.
+- **Bind a modifier to a chord** — map e.g. Ctrl to L1 and the chord system works from the keyboard too (Ctrl + Enter triggers whatever you assigned to L1 + A).
+
+<Aside type="tip">
+Since the keys are mapped to *buttons*, the on-screen keyboard is optional — just select a text field with the D-Pad and type directly on the physical keyboard.
+</Aside>
+
+## Phone Remote
+
+Turn any smartphone into a wireless TV remote. **Settings → Controllers & Remote → Phone Remote** (or the phone icon) starts a local server on your PC, and your phone pairs over your local Wi-Fi.
+
+### Pairing
+
+1. Make sure your phone is on the **same Wi-Fi network** as the PC.
+2. Enable the phone remote server — it's **off by default** and only starts when you turn it on.
+3. **Scan the QR code** with your phone's camera, or open the connection URL shown in the settings page.
+
+Once connected you get a full wireless touchpad, D-Pad, volume and channel rockers, and shortcut buttons.
+
+<Aside type="tip">
+**Add the remote to your home screen** for one-tap access instead of typing the URL every time.
+
+**On Android** (Chrome, Samsung Internet, etc.):
+1. Open the remote URL in your mobile browser.
+2. Tap the **three dots** menu in the top-right corner.
+3. Select **Add to Home screen** (or **Install app**).
+4. Tap **Install** or **Add** to confirm.
+
+**On iPhone (iOS Safari):**
+1. Open the remote URL in Safari.
+2. Tap the **Share** button at the bottom of the screen (the square with an arrow pointing up).
+3. Scroll down and tap **Add to Home Screen**.
+
+A shortcut to the remote will appear on your home screen — tap it and the remote opens straight to ynoTV.
+</Aside>
+
+### Navigation Tabs
+
+The bottom bar of the remote has tabs you can show, hide, and reorder — and you can pick which one is the **default landing tab**. Available tabs include:
+
+- **Guide** — browse categories and the full channel list, tuned to match the desktop guide's ordering, names, favorites, and custom categories. Selecting a channel tunes it on the desktop, and the currently playing channel is highlighted.
+- **Sports** — live scores for your followed leagues, with game links that tune the matching broadcast on the desktop.
+- **Multiview** — pick the multiview layout and engine (HLS or MPV), and watch the multiview slots update live.
+- **Touchpad / remote** — the classic touchpad, D-Pad, and media controls.
+
+### Customizing the remote
+
+The **Phone Remote Customizer** in Settings lets you personalize what your phone sees:
+
+- **Skins & themes** — pick a visual skin; updates instantly on connected phones.
+- **Corner satellite buttons** — configure the 4 shortcut buttons around the D-Pad dial.
+- **Middle action buttons** — remap the Back and Play/Pause buttons between the rockers and adjust their size (Compact / Normal / Large / Expanded).
+- **Quick action buttons** — add, remove, and reorder the quick buttons below the D-Pad.
+- **Display options** — show or hide the Now Playing banner, search bar, volume rocker, and channel rocker.
+
+There's a **live interactive preview** in the customizer so you can see changes before they hit your phone.
+
+<Aside type="note">
+The phone remote respects your desktop settings — including failover behavior (Always Play Primary / Keep View on Selected Channel), manual channel ordering, edited channel names, category filters, and the multiview engine selection.
+</Aside>

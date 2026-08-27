@@ -40,6 +40,7 @@ export default defineConfig({
 						{ label: 'Sports Hub', slug: 'guides/sports-hub' },
 						{ label: 'Search & Discovery', slug: 'guides/search' },
 						{ label: 'Playback & MPV', slug: 'guides/playback' },
+						{ label: 'Controllers & Phone Remote', slug: 'guides/controllers-phone-remote' },
 						{ label: 'Keyboard Shortcuts', slug: 'guides/shortcuts' },
 						{ label: 'Tips & Tricks', slug: 'guides/tips' },
 						{ label: 'Troubleshooting', slug: 'guides/troubleshoot' },
