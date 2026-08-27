@@ -1,25 +1,68 @@
 ---
 title: Widgets
-description: Customisable overlay widgets for additional information and navigation
+description: Overlay and home-screen widgets for scores, recent channels, favorites, custom groups, and what's next
 ---
 
-Customisable overlay widgets can be added to the playback screen for additional information and navigation. Right-click the background or stream to add widgets. Size and background opacity can be configured under **Settings → Widgets**.
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
 
-## Live Sports Score Widget
+**Widgets** put extra information and quick navigation right on your screen — either as overlays on the playback view or as boxes on the home screen. Widgets are fully customizable: scale, background opacity, and which ones appear are all under your control.
 
-Displays live scores for ongoing matches at the top of the overlay. Click a score to view detailed match information, or right-click to hide specific matches. Available in two modes:
+## Adding Widgets
 
-- **Persistent** — Remains visible when the UI overlay auto-hides.
-- **Autohide** — Hides alongside the UI overlay.
+- **On the playback screen** — right-click the background or stream → **Add Widget**, then pick from the available widget types.
+- **On the home screen** — use the **Widgets menu** (it auto-hides when a stream is playing; right-click the home screen to reopen it during Live TV playback).
+- The **Active Widgets** panel shows what's currently enabled, with one-click removal, and an **Add Widget** section for adding more.
 
-## Recent Channels Widget
+## Widget Types
 
-Shows recently watched channels along with their currently airing programme. Click any entry to switch to that channel.
+### Live Sports Scores
 
-## Custom Group Widget
+Displays live scores for ongoing matches along the top of the overlay. Click a score to view detailed match information, or right-click to hide specific matches. Available in two modes:
 
-Displays channels and their currently airing programmes from a selected custom group, enabling quick channel switching directly from the overlay.
+- **Persistent** — remains visible when the UI overlay auto-hides.
+- **Autohide** — hides alongside the UI overlay.
 
-## What's Next Widget
+The Sports widget must be enabled (via the right-click context menu) before its overlay settings apply.
 
-Shows the next scheduled programme on the current channel.
+### Live Games Sidebar
+
+The sports **Live Games Sidebar** — a tab on the right edge of the main screen listing every live game with a count, scores, and one-tap access to streams. Can be removed from the Active Widgets panel. See the [Sports guide](./sports-hub/) for details.
+
+### Recent Channels
+
+Shows recently watched channels along with their currently airing programme. Click any entry to switch to that channel. The number of entries is configurable (e.g. **Recent 5** or 10).
+
+### Favorites
+
+Displays your favorite channels with their current programmes for one-click switching — a favorites rail right on the overlay.
+
+### Custom Group Widget
+
+Displays channels and their currently airing programmes from a selected **custom group**, enabling quick channel switching directly from the overlay.
+
+### What's Next Widget
+
+Shows the next scheduled programme on the current channel — handy for deciding whether to stay tuned or switch.
+
+<CardGrid>
+  <Card title="Widget Overlay Visibility" icon="eye">
+    Toggle whether the **LiveTV Guide widget** and the **Player Media Bar widget** appear on their respective views.
+  </Card>
+</CardGrid>
+
+## Customizing Widgets
+
+Under **Settings → Live TV → Widgets & Scales**:
+
+- **Widget Scale** — scales the entire widget box and text (default 100%), with quick presets.
+- **Background Opacity** — how transparent the widget box background is; lower values are more see-through.
+- **Live preview** — see the current scale and opacity applied to a sample widget as you adjust.
+- **Sports Scores Overlay** — separate controls for the scores bar: **Overlay Scale** (height of the bar) and its gradient **background opacity**.
+
+<Aside type="tip">
+Widgets scale with your UI — if you change the application UI scale, widget sizing follows along, so a scale preset of 100% is the right baseline for most setups.
+</Aside>

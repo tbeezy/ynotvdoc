@@ -55,5 +55,39 @@ To ensure you never miss the beginning or end of a program (common in live sport
 
 These can be adjusted globally in **Settings** or on a per-recording basis via the **DVR Page**.
 
+### Record Until Stop
+When starting a **Quick Record**, you can choose **Record until Stop** instead of a fixed duration — the recording runs until you stop it manually from the DVR dashboard (shown as "Recording until you stop it" while active).
+
+### Custom Titles
+Every recording dialog lets you set a custom **Recording title**, so you can name recordings whatever makes sense to you instead of using the default program/channel name.
+
 ### Active Controls
 While a recording is in progress, you can monitor its status via the dashboard or stop it manually at any time. Completed files are stored in your configured recording path and can be played directly through the ynoTV interface.
+
+## Storage & Cleanup
+
+### Storage Locations
+Under **Settings → DVR**:
+- **Storage Location** — where recorded videos are saved (required for recording to work).
+- **Downloads Location** — where downloaded videos/VODs are saved (or **Ask every time** if you'd rather choose per download).
+- **Organize Downloads into Subfolders** — saves Movies and Series into separate `Movies` and `Series` folders inside the download location.
+
+### Auto-Cleanup
+**Storage Management** prevents your drive from filling up:
+- **Auto-Cleanup** — automatically deletes the oldest recordings to enforce disk space quotas.
+- **Max Disk Usage Threshold** — cleanup starts when the recording drive's total usage exceeds this limit.
+- **Keep Recordings For** — keep recordings indefinitely (until space is needed) or for a set number of days.
+
+### Auto-Convert
+**Auto-Convert Recordings** automatically converts completed recordings to **MP4 or MKV** using FFmpeg (lossless stream copy), or keep the original `.ts` files.
+
+## Deleting Recordings
+
+When you delete a recording from the DVR dashboard, you choose what happens:
+
+- **Delete from disk** — removes the recording file from your hard drive. This cannot be undone.
+- **Remove from list only** — removes the entry from the DVR dashboard but keeps the file on disk, so you can re-add or keep it as a file elsewhere.
+
+<Aside type="tip">
+The dashboard asks which you want each time, so you never accidentally delete a file you wanted to keep.
+</Aside>

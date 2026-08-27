@@ -6,9 +6,7 @@ description: Manage and browse Video on Demand content in ynoTV
 import {
   Card,
   CardGrid,
-  Aside,
-  Tabs,
-  TabItem
+  Aside
 } from '@astrojs/starlight/components';
 
 ynoTV includes a high-performance, native Rust engine specifically optimized for synchronizing and browsing massive VOD (Video on Demand) libraries.
@@ -26,6 +24,16 @@ Access your VOD content directly from the sidebar or via the dedicated **Movies*
   Configure your TMDB API key in **Settings > TMDB** to enable rich metadata and high-quality posters for your VOD library.
 </Aside>
 
+### Sorting
+
+Every VOD view offers a **Sort** dropdown with ascending/descending order for each option:
+
+- **A-Z** — alphabetical by title.
+- **Recently Added** — newest syncs first.
+- **Year** — by release year.
+- **Rating** — by score.
+- **Last Watched** — by your viewing history, most recent first.
+
 ## Category Management
 
 Streamline your VOD browsing experience by organizing which content categories appear in your Movies and Series views.
@@ -35,6 +43,39 @@ Streamline your VOD browsing experience by organizing which content categories a
 
 **Hide Categories**
 :   Selectively disable categories to exclude them from your browsing interface. Hidden categories will not display content in category views and their items will be excluded from search results, providing a cleaner, more focused content discovery experience.
+
+## Playlists
+
+Create **VOD playlists** to organize movies and TV episodes across sources into your own collections:
+
+- **Create Playlist** — name a new playlist, then **Add to Playlist** from any movie/series (or **Add Selected** in bulk).
+- **Randomize List** — shuffle the order on demand.
+- **Autoplay next on playlist** — keep playing through the playlist without interruption.
+- **Rename / Delete / Remove from playlist** — manage your playlists at any time.
+- Items from a deleted or disabled source are kept but shown as **hidden** in the playlist until the source returns.
+
+## Trailers
+
+Movies and series can play a **trailer** with a single click. Trailer options (available from the title's player menu) control where it comes from:
+
+- **Use trailer from the IPTV source** — the provider's own trailer stream, if one exists.
+- **Use trailer from TMDB** — the official TMDB trailer, played via YouTube (powered by yt-dlp).
+
+The trailer plays in your chosen player mode (embedded, popout, or external). If neither source has a trailer, the app tells you **"No trailer available"** for that title.
+
+<Aside type="tip">
+  If YouTube trailers fail with 403 errors, update yt-dlp from **Settings → About → Updates** — YouTube frequently breaks older versions.
+</Aside>
+
+## Series Playback
+
+### Autoplay Next Episode
+
+Under **Settings → Playback → VOD Settings**, **Auto-Play Next Episode** automatically plays the next episode of a series when the current one ends — and if it's the end of a season, it starts the first episode of the next season automatically.
+
+### Queueing Episodes
+
+Series can be **queued** for continuous playback — queue a single season (**Queueing Season...**) or the entire show (**Queueing all seasons...**), with progress shown as episodes are queued.
 
 ## Progress Tracking
 

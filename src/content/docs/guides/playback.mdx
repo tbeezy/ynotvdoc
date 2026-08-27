@@ -1,6 +1,6 @@
 ---
-title: Playback Configuration
-description: Optimizing stream performance and hardware acceleration with MPV flags
+title: Playback & MPV
+description: Choosing the playback engine, HDR tonemapping, audio settings, yt-dlp updates, and custom MPV flags
 ---
 
 import {
@@ -9,11 +9,32 @@ import {
   TabItem
 } from '@astrojs/starlight/components';
 
-ynoTV utilizes the powerful **MPV** engine for media playback. While the default settings are optimized for a broad range of hardware, you can apply custom flag parameters in **Settings** > **Playback** to fine-tune your experience.
+ynoTV uses the powerful **MPV** engine for media playback. **Settings → Playback** controls which engine runs, how video and audio are processed, and — for power users — the exact MPV flags passed to the player.
+
+## Playback Engine
+
+ynoTV ships with **two playback engines**, chosen at the top of the MPV Player tab:
+
+- **Standalone Sidecar (mpv.exe — Default)** — runs MPV as an isolated external process that communicates over IPC named pipes. The classic behavior, stable and battle-tested.
+- **Embedded libmpv** — an in-process native playback engine with instant startup and smooth seeking, rendering through Direct3D 11 / OpenGL directly in the app.
+
+<Aside type="caution">
+Switching engines requires an **app restart** — ynoTV will offer to restart for you after you change it. Custom MPV parameters are shared by both engines, but engine-specific behaviors (like overlay support) differ; if something behaves unexpectedly, try the other engine.
+</Aside>
+
+## Picture Quality Profiles
+
+**Picture Quality Profiles** applies a video scaling and processing profile to MPV on the next stream start:
+
+| Profile | What it does |
+| --- | --- |
+| **Smooth on weak PCs** | Lowest GPU/CPU load — bilinear scaling, no dithering or debanding, faster decoding |
+| **Balanced (Default)** | MPV's standard defaults with no extra processing |
+| **Maximum quality** | High-quality scaling, debanding, and dynamic HDR peak analysis for powerful GPUs |
 
 ## Hardware Acceleration
 
-Hardware decoding significantly reduces CPU usage by offloading video processing to your GPU. 
+Hardware decoding significantly reduces CPU usage by offloading video processing to your GPU. The **Enable Hardware Video Acceleration** toggle automatically passes `--hwdec=auto` and `--vo=gpu` to MPV — but a custom `--hwdec` parameter in your flags below takes priority (the toggle shows a "Managed by custom parameter" note when that happens).
 
 ### Recommended Decoding Flags
 ```bash
@@ -39,9 +60,36 @@ If "auto" causes stability issues, use these overrides:
 </TabItem>
 </Tabs>
 
-## Optimization Tiers
+## HDR-to-SDR Tonemapping
 
-### Tier 1: Essential Stability
+If HDR content looks washed-out or too dark on your standard display, enable **HDR-to-SDR Tonemapping** — it maps HDR video sources (HDR10, HLG, Dolby Vision) to SDR for accurate colors and contrast.
+
+- **Show HDR Quick Toggle in Player Bar** adds an **[HDR]** button to the player control bar, letting you toggle tonemapping on the fly during playback — even when the main tonemapping setting is off.
+
+## Audio Settings
+
+The **Audio** tab of **Settings → Subtitles & Audio** shapes your sound directly in the MPV engine:
+
+- **Normalize Loudness** — dynamic normalization that evens out quiet dialogue and loud action scenes.
+- **Audio Profile** — e.g. **Night mode**, which gently compresses loud moments for late-night watching. Profiles take effect immediately and stack with the normalizer.
+- **Mix Surround Sound Down to Stereo** — folds 5.1/7.1 surround into 2 channels for clear dialogue on laptops and stereo speakers.
+- **Maximum Volume Boost** — allows amplifying audio past 100% (100% / 150% / 200%) for quiet recordings and streams.
+- **Default Audio Language** — auto-selects your preferred audio track when a stream has multiple languages.
+- **Audio Output Device** — route playback to a specific device (e.g. headphones vs. speakers).
+
+## yt-dlp
+
+**yt-dlp** powers YouTube trailer playback. **Settings → About → Updates** shows which version is bundled, its path, and a one-click **Update yt-dlp** button that downloads the latest release into the bundled sidecar location. The status confirms when you're up to date ("Up to date (version)") or reports the newly installed version.
+
+<Aside type="note">
+If YouTube trailers fail with 403 errors or won't play, updating yt-dlp is the first thing to try — YouTube frequently breaks older versions.
+</Aside>
+
+## Custom MPV Parameters
+
+Beyond the toggles, you can pass **custom MPV parameters** (one per line) that are applied on player startup. A few common flags are provided as one-click helpers (hardware decoding, stream caching, network timeout, smooth playback, cache size, auto-reconnect).
+
+### Optimization Tier 1: Essential Stability
 Add these flags immediately to improve stream buffering and network resilience:
 ```bash
 --vo=gpu                           # High-performance GPU rendering
@@ -52,7 +100,7 @@ Add these flags immediately to improve stream buffering and network resilience:
 --user-agent="Mozilla/5.0"         # Avoid blocks from strict providers
 ```
 
-### Tier 2: Stream Reliability
+### Optimization Tier 2: Stream Reliability
 Prevent common IPTV issues like audio drift and connection drops:
 ```bash
 --stream-lavf-o=reconnect=1        # Auto-reconnect on drop
@@ -65,4 +113,16 @@ Prevent common IPTV issues like audio drift and connection drops:
 
 <Aside type="caution">
 Incorrect MPV flags can cause playback to fail. If you experience issues after adding custom flags, clear the text field in Settings to return to defaults.
+</Aside>
+
+## Reconnect & Stall Handling
+
+Under **Auto-Reconnect**, ynoTV can recover streams automatically:
+
+- **Event-Based Reconnect** — reacts immediately to stream errors (EOF, HTTP errors, MPV crashes). Disable if you experience overly aggressive reconnects on slow or unstable sources.
+- **Stall Detection (Watchdog)** — periodically polls MPV to detect frozen streams, with a configurable **timeout** (seconds of no position change before a stream is considered stalled). Values below 8s can false-trigger on slow servers.
+- **Max Retry Attempts** — how many reconnection attempts before showing a permanent error.
+
+<Aside type="caution">
+**At least one of the two detections must stay enabled.** Event-Based Reconnect catches stream errors (EOF, HTTP errors, crashes) and Stall Detection catches frozen/unresponsive streams — they are the only triggers that start a retry or failover. If both are disabled, a dead or stalled stream is never detected and will simply sit there, so ynoTV won't attempt to reconnect or fail over.
 </Aside>

@@ -19,10 +19,11 @@ ynoTV provides a robust engine for managing multiple IPTV sources. Whether you u
 | Feature | Description |
 |---------|-------------|
 | **Multi-format Support** | Full compatibility with M3U/M3U8 playlists, Xtream Codes API, and Stalker Portal (MAC address) integration. |
-| **EPG Integration** | Built-in Electronic Program Guide support with the ability to configure dedicated XMLTV sources for any playlist. |
+| **EPG Integration** | Built-in Electronic Program Guide support with smart EPG URL fallback and global EPG links shared across sources. |
 | **Automatic DNS Swap** | Add backup URLs to automatically swap if main URL is unreachable. |
 | **Backup Credentials** | Assign secondary MAC addresses or fallback credentials to any provider for seamless one-click failover. |
 | **Custom User-Agents** | Configure unique User-Agent strings per source to ensure maximum compatibility with various providers. |
+| **Per-Source Sync Intervals** | Override the global TV guide and VOD refresh intervals individually per source. |
 | **Source Insights** | Instantly view channel, movie, and series counts for each playlist via the Source Overview dashboard. |
 | **Connection Monitoring** | Track active vs. maximum allowed connections and account expiration dates in real-time. |
 
@@ -35,7 +36,7 @@ Access the **Settings** panel (Key: `,`) and navigate to the **Sources** tab to 
 
 1. Select **Add Source** > **M3U Playlist**.
 2. **Details**: Provide a descriptive name and the playlist URL (or import a local `.m3u` file).
-3. **EPG**: Link a separate XMLTV URL if not already embedded in the playlist headers.
+3. **EPG**: Link a separate XMLTV URL if not already embedded in the playlist headers — ynoTV auto-detects embedded EPG URLs (`EPG URL detected`).
 4. **Finalize**: Click **Add Source** and then **Sync Channels** to populate your guide.
 
 </TabItem>
@@ -57,13 +58,36 @@ Access the **Settings** panel (Key: `,`) and navigate to the **Sources** tab to 
 </TabItem>
 </Tabs>
 
-## Professional Management
+## Smart EPG URL Fallback
+
+Every source can have **additional EPG URLs** as a **Waterfall EPG** — they fill in channels the primary EPG missed, in order. If the primary EPG doesn't cover a channel, ynoTV moves to the next URL in the list, so guide data is as complete as possible. You can also add **backup URLs** for the source itself: if the primary URL fails, backups are tried in order, and a working backup automatically becomes the primary URL.
+
+The **EPG Sources** tab manages **Global EPG Links** — EPG URLs that can be shared across multiple sources. They're downloaded once and applied to all linked sources, only filling channels that don't already have EPG data. Each source also has **EPG Time Offset (hours)** for correcting misaligned guides, and **Advanced EPG Matching** (display-name based matching for external EPGs — slower but more accurate for some providers).
+
+## Per-Source Sync Intervals
+
+Each source can **override the global refresh intervals**:
+
+- **Custom Refresh Interval (hours)** — overrides the global TV Guide refresh interval for this source (leave empty or 0 to use the global setting).
+- **Custom VOD Refresh Interval (hours)** — overrides the global VOD refresh interval for this source.
+
+This is useful when one provider updates its lineup frequently while others rarely change — sync the busy source often and let the quiet ones run on the global schedule. Individual **Sync Channels** and **Sync VOD** buttons also let you refresh a single source on demand.
+
+## Per-Source Logo Overrides
+
+Beyond the global [Logo Settings](./live-tv/#logos), each source can have its own **Per-Source Overrides** — override icon shape (Square vs. Rectangle/Horizontal) and background per playlist or provider. The **Prefer EPG logos globally** option additionally makes channels with EPG data display the matched EPG channel's logo instead of the playlist's.
+
+## Managing Sources
+
+### Hide / Show Disabled Sources
+
+Use the **Hide Disabled** toggle at the top of the Playlist Sources list to collapse disabled sources out of the view — handy when you have many providers and want to focus on the active ones. The setting is remembered between sessions, and toggling it back reveals them again.
 
 ### Advanced Configuration
 For advanced users, each source card offers deep customization:
 - **Priority Order**: Drag and drop sources in the Settings page to define their global sort order.
-- **Connection Failover**: Add backup credentials to ensure uninterrupted service if a primary MAC address or account is flagged.
 - **Diagnostic Tools**: View real-time metadata including connection limits and provider-side expiration dates.
+- **Sync Scope**: Mark a source **LiveTV Only** (skip VOD/Series sync) or **VOD/Series Only** (skip channel sync) to save bandwidth.
 
 ### Playlist Refinement
 Beyond adding sources, you can refine how content is presented:

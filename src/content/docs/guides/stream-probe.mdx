@@ -1,0 +1,94 @@
+---
+title: Channel Stream Probe & IPTV Checker
+description: Validate stream health, detect dead or geoblocked channels, measure quality, and auto-fill resolution and bitrate badges
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+The **Channel Stream Probe & IPTV Checker** scans your channels to verify stream health, detect problems, and automatically populate the **quality badges** (resolution, FPS, audio channels, bitrate) shown across the app. It's the fastest way to find dead channels and clean up your TV guide.
+
+## Launching a Probe
+
+The probe modal can be opened from several places:
+
+- **Settings → LiveTV → Channels → Launch Channel Probe** — the full tool with all scopes.
+- **The EPG toolbar** — the **Stream Probe** button in the guide, pre-scoped to what you're currently viewing.
+- **Right-click a category** in the channel strip → **📡 Probe Category Streams...** — instantly probes just that category.
+
+## Choosing What to Probe
+
+Pick the **source playlists** and **categories** you want to scan — or select everything. Then choose a **scope** (Target Channels):
+
+| Scope | Probes |
+| --- | --- |
+| **Enabled Channels Only** | All currently enabled channels |
+| **Enabled Channels Missing Badges** | Only enabled channels that have no metadata badges yet — ideal for filling in badge gaps without rescanning everything |
+| **Dead / Disabled Channels Only** | Only channels that previously failed or are disabled — great for re-checking after a provider issue |
+| **All Channels (Including Dead / Disabled)** | Everything, including channels you've disabled |
+| **Failover Channels** | Members of your failover groups, with a sub-filter: **All Failover Channels** or **Failover Channels Missing Badges** (only members without metadata) |
+| **Sports Linked Channels** | Channels linked to sports teams, with a **League** filter to narrow to specific leagues |
+
+## Probe Options
+
+<CardGrid>
+  <Card title="Auto-fill Quality Badges" icon="badge-check">
+    Saves detected resolution, FPS, audio channels, and bitrate straight to the database so badges appear in the EPG, overlay, search, failover, and sports views.
+  </Card>
+  <Card title="Measure Bitrate" icon="activity">
+    Captures the stream for a few seconds per channel to measure video bitrate and query audio bitrate. Adds a few seconds per channel, but gives you the full bitrate badges.
+  </Card>
+  <Card title="Concurrency" icon="layers">
+    How many streams to test at once. 1 slot is the safest for providers with connection limits — using more opens multiple simultaneous connection slots with your IPTV provider.
+  </Card>
+  <Card title="Timeout & Retries" icon="timer">
+    Per-channel timeout in seconds, plus automatic retries when a stream initially fails or returns dead.
+  </Card>
+</CardGrid>
+
+During a scan you get live progress (channels tested, per-second rate, ETA) and can **Pause**, **Resume**, **Stop**, or **Run in Background** while you keep using the app.
+
+## Reading the Results
+
+Every channel gets a **Health Score** and a **Status**:
+
+- **Alive** — stream responds correctly.
+- **Dead** — no response; stream won't play.
+- **Geoblocked** — stream is blocked in your region.
+- **DRM** — stream requires DRM and can't be played.
+
+The results table shows **Quality, FPS, Video/Audio codecs, Video/Audio bitrate, Latency**, and a **Diagnostic Detail** column with the underlying error. Each row has actions to **play a preview** or **re-probe** an individual channel.
+
+Filter tabs break the results down instantly: All, Alive, Dead, Geoblocked, DRM, and by quality tier (**4K, 1080p, 720p, SD**) — plus a search box to filter by channel name.
+
+## Bulk Actions
+
+- **Disable Dead Channels** — one click disables every confirmed dead channel so they're hidden from your TV guide (with a confirmation first).
+- **Re-enable Alive Channels** — after a scan, re-enable channels that are verified alive again.
+- **Rerun Dead** — re-test only the dead and failing streams from the current scan.
+
+<Aside type="tip">
+Use the **missing badges** scopes first: they skip channels you've already probed, so regular maintenance scans only touch the channels that still need data.
+</Aside>
+
+## Sorting Groups by Quality
+
+When probing **Failover Channels** or **Sports Linked Channels**, you can **sort the group by quality** — reordering channels within each group so the best one (highest resolution + bitrate) becomes the primary channel (priority 0).
+
+- Sort by **Resolution** (highest first, bitrate breaks ties) or **Bitrate** (highest first, resolution breaks ties).
+- A **preview shows the new order** before you confirm — existing channel priorities are rewritten, so make sure the preview looks right.
+
+## Exporting Reports
+
+The probe can export its diagnostics in three formats:
+
+- **CSV Spreadsheet (.csv)** — a table of channels with resolution, codecs, FPS, and latency, for spreadsheets.
+- **JSON Diagnostics (.json)** — complete scan diagnostics with score breakdowns and metadata.
+- **M3U Playlist (.m3u)** — a clean playlist containing **only verified working streams**, ready to drop into another player or share.
+
+<Aside type="note">
+Badges filled by the probe are controlled by **Settings → LiveTV → Metadata Badges** (which badges show, FHD/HD vs 1080p/720p labels, the "fps" suffix) and the **Avg Bitrate** location setting (EPG, overlay, search, failover, or sports). The **Resolution filter** in the EPG grid only shows channels that have been probed — so probing is the first step to using it.
+</Aside>

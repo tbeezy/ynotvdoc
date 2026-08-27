@@ -7,4 +7,13 @@ description: Common issues and solutions for ynoTV
 
 **Source not syncing or channels giving error but not in other players?** Try adding a user-agent in the source setting. An example one: `TiviMate/4.7.0 (Allwinner Nitro Pro; Android 12)`
 
+## App Feels Sluggish
+
+If the app feels slow or unresponsive, accumulated cached data is often the culprit — over time, cached channel, EPG, and VOD data can grow large enough to weigh down routine operations.
+
+1. **Clear cached data** — go to **Settings → Sources → Data Refresh → Clear Cache**. This removes all cached channel, EPG, and VOD data and compacts the database to reclaim disk space, which can also resolve related issues such as duplicate entries, stale guide data, or content not updating correctly. Your sources, settings, favorites, and playlists are preserved, and the data is re-downloaded on the next sync.
+2. **Enable optimization options** — open **Settings → Optimization** and enable the performance options there. These reduce the visual load on the interface (for example, disabling backdrop blur and flattening the glass effects) and can noticeably improve responsiveness, particularly on integrated or older graphics hardware.
+
+If the app remains sluggish after both steps, check the [Playback page](./playback/) for hardware-acceleration and reconnect settings that can further reduce overhead.
+
 If you run into any issues, please [open an issue](https://github.com/tbeezy/ynotv/issues) on GitHub.

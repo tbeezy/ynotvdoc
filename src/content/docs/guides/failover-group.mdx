@@ -1,13 +1,17 @@
 ---
 title: Automatic Stream Fallback
-description: Manage failover groups for uninterrupted streaming
+description: Manage failover groups for uninterrupted streaming, including Smart Auto-Group clustering and playback behavior
 ---
+
+import {
+  Aside
+} from '@astrojs/starlight/components';
 
 The **Failover Group** feature ensures uninterrupted streaming by automatically switching to backup channels when a channel in a Failover group is stalled/dead.
 
 ## Overview
 
-Failover groups allow you to organize multiple channels broadcasting the same feed into a single logical group. During playback, if the active channel's stream becomes stalled or interrupted, ynoTV automatically swaps to the next available channel within the group. Additionally, an overlay appears in the bottom-right corner, providing quick manual access to switch between channels in the Failover Group at any time.
+Failover groups allow you to organize multiple channels broadcasting the same feed into a single logical group. During playback, if the active channel's stream becomes stalled or interrupted, ynoTV automatically swaps to the next available channel within the group. An overlay appears in the bottom-right corner, providing quick manual access to switch between channels in the Failover Group at any time.
 
 ## Creating a Failover Group
 
@@ -20,8 +24,58 @@ You can also right-click any channel → **Add to Failover Group** to create a n
 
 ## Managing Failover Groups
 
-You can edit, reorder, or delete failover groups at any time from the **Failover Group** button. Reordering changes what plays next when a channel fails.
+You can edit, reorder, or delete failover groups at any time from the **Failover Group** button. **The top channel is the primary** (marked PRIMARY); the others are backups numbered by priority. Drag the ⋮⋮ handles to change priority — reordering changes what plays next when a channel fails.
+
+- **Display Source** — show each channel's source and category in the group list.
+- Groups can be **renamed** (click the name) or **deleted** (channels simply leave the group).
+
+## Smart Auto-Group
+
+Instead of building groups by hand, **Smart Auto-Group** scans your channels and automatically clusters similar streams into proposed failover groups. Open **Failover Group → Smart Auto-Group** and configure the matching rules:
+
+### Matching Rules
+
+- **Strip Country & Provider Prefixes** — ignore formatting prefixes like `US |`, `USA:`, `[US]`, `(US)`, `UK:` so differently-named providers match accurately.
+- **Group Quality Variants** — cluster the 4K, FHD, HD, and SD versions of the same channel and rank by quality.
+- **Match Local Stations by Callsign** — cluster affiliate channels sharing the same broadcast callsign (WABC, KNBC, etc.).
+- **Separate East & West Feeds** — never link East and West coast feeds together to prevent programming schedule mismatches. For unlabeled channels without East/West in the name, pick the **Feed Alignment**: *Merge Default with East* (recommended), *Combine All*, or *Strict Separate*.
+- **Minimum Confidence Score** — higher thresholds ensure stricter similarity before proposing a group.
+- **Country & Regional Linking** — prevent channels from different countries from linking (Same Country Only) or allow a specific set of countries.
+
+### Scope
+
+Narrow which channels get scanned:
+
+- **Enabled Sources Scope** — leave unselected to scan all enabled sources, or check specific sources.
+- **Categories Scope** — scan all categories, a selected subset, or **Sports Only**.
+
+### Reviewing Results
+
+Hit **Run Smart Scan**, then review the **Suggested Groups** (each with a match percentage) and **Additions to Existing Groups**. Accept individual groups with **Accept Group**, or **Accept All Groups** — accepted groups are saved to your failover list with the best-matching stream as primary.
+
+## Playback Behavior
+
+Under **Settings → Live TV → Failover Group** (or the failover widget), two options control how tuning behaves with failover groups:
+
+- **Always Play Primary** — when you tune any channel that belongs to a failover group, ynoTV automatically starts with the **primary stream first**, unless you selected the channel directly from the failover widget or switched during an active failover. This avoids landing on a random backup stream when you just want to watch the channel.
+- **Keep View on Selected Channel** — when tuning a channel that belongs to a failover group, play the primary stream but **keep the guide/category on the channel you picked**, so channel up/down keeps navigating the category you were browsing instead of jumping to the primary's category.
+
+<Aside type="tip">
+Both options also apply when tuning from the **phone remote** — its guide bar respects the same failover behavior and highlights the channel you picked.
+</Aside>
+
+## Probing Failover Channels
+
+The [Channel Stream Probe](./stream-probe/) includes a **Failover Channels** scope that tests every member of your failover groups. Use the sub-filter to probe **All Failover Channels** or **Failover Channels Missing Badges** — the latter skips members that already have metadata, so you only fill in the gaps.
+
+## Sorting Groups by Quality
+
+Once channels have been probed, you can **sort each failover group by quality** — reordering members so the best channel (highest resolution + bitrate) becomes the primary (priority 0). Choose **Resolution** (highest first, bitrate breaks ties) or **Bitrate** (highest first, resolution breaks ties), preview the new order, and confirm. Existing channel priorities are rewritten, so check the preview first.
 
 ## Behavior
 
 When a channel fails to load from the primary source, ynoTV will automatically try the next source in the failover group. This process is seamless and requires no manual intervention.
+
+<Aside type="caution">
+Automatic failover depends on the **auto-reconnect detections** in **Settings → Playback → Auto-Reconnect** (Event-Based Reconnect and/or Stall Detection). They are the only triggers that notice a dead or stalled stream and start the failover. If **both** are disabled, ynoTV won't detect that the stream died, so it won't switch to the backup channel — keep at least one of them enabled for failover to work.
+</Aside>

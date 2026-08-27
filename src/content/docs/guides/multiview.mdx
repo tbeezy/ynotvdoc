@@ -18,6 +18,23 @@ ynoTV supports five distinct viewing modes:
 4. **Big + Bottom Bar**: A large main view with a horizontal bar for rapid secondary channel access.
 5. **2x2 Grid**: Four equal-sized screens for balanced monitoring.
 
+## Opening Multiview
+
+Click the **Multiview button in the titlebar** to open the layout picker, choose a layout, and switch instantly. The picker shows the available layouts plus the **Viewer Engine** selection (below).
+
+## Viewer Engine
+
+Multiview can render its players with either of two engines, selected in the layout picker:
+
+- **HLS (Default)** — an in-browser HLS player that supports on-screen overlays and uses less system resources.
+- **MPV** — the embedded **libmpv** player, which also supports overlays and shares the MPV rendering pipeline.
+
+HLS is the default engine — switch to MPV if you prefer the MPV rendering pipeline or need behaviors specific to the native engine. When you switch layouts, the chosen engine is remembered and applied to all multiview slots.
+
+<Aside type="tip">
+If you previously used multiple MPV instances and found them heavy, HLS mode reduces system resource usage while keeping overlay support.
+</Aside>
+
 ## Using Multiview
 
 ### Adding Channels
@@ -30,13 +47,13 @@ ynoTV supports five distinct viewing modes:
 - **Audio Control**: Each screen can be independently muted or unmuted.
 - **Seamless Switching**: If you return to Main View and then back to a Multiview grid, ynoTV will resume playback of your previously viewed channels in their respective slots.
 
-## HLS Multiview
+## Phone Remote Multiview Tab
 
-Multiview now includes an option to choose between **MPV** or **HLS** as the playback container. Switch to HLS if your system struggles with multiple MPV instances or if you need overlay support.
+The phone remote includes a **Multiview tab** that mirrors the desktop multiview:
 
-<Aside type="tip">
-HLS mode can reduce system resource usage and enables on-screen overlays that are not available when using multiple MPV processes.
-</Aside>
+- **Engine selector at the top** — pick **HLS** or **MPV** right from the phone; the desktop multiview switches to match (HLS is the default).
+- **Layout picker** — choose any layout from the phone and the desktop view updates live.
+- Slot changes and the currently playing streams sync back so the phone always shows what's on screen.
 
 ## Persistence & Startup
 

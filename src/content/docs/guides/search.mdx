@@ -22,19 +22,40 @@ ynoTV indexes the following data for real-time results:
 ### Visibility Filters
 Your global search results respect your privacy and organization settings. Any sources, categories, or individual channels that you have **disabled** in Settings will not appear in search results.
 
-### Search Results Limit
+## Results Tabs
+
+Search results are organized into **three tabs**:
+
+| Tab | What it shows |
+| --- | --- |
+| **Channels** | Matching channels, displayed in the same style as the Live TV channel list |
+| **Live Now EPG** | Currently airing programs that match your query, with **time remaining**, start/end times, and a **progress bar** showing how far the program is through its slot |
+| **Upcoming EPG** | Future programs matching your query, with their start and end times |
+
+EPG tabs only appear when your query matches program data — a pure channel query shows just the Channels tab.
+
+## Advanced Search
+
+Click the **search icon** at the end of the search bar to open **Advanced Search**, giving you precise control over what gets searched:
+
+- **Search Term** — your query (at least 2 characters).
+- **Search In** — **Channels**, **EPG Only**, or **Both**.
+- **Sources & Categories** — restrict the search to specific sources and/or categories instead of everything enabled.
+- **Use these settings for regular title bar searches** — apply the same scope to the regular search bar, so you don't have to open Advanced Search every time.
+
+<Aside type="tip">
+Search is case-insensitive and supports partial matching, allowing you to find "BBC One" simply by typing "bbc". Multi-word queries are matched intelligently, and full support for Cyrillic and other non-Latin scripts (including accent folding and transliteration) means "perviy" matches "Первый".
+</Aside>
+
+## Search Results Limit
 
 Customize the maximum number of search results displayed to match your preferences:
 
 **Configuration Path**
-:   Navigate to **Settings → Channels → Max Search Results**
+:   Navigate to **Settings → Channels → Max search results**
 
 **Default Value**
-:   The system is pre-configured with a limit of **200 results** to ensure optimal performance and responsiveness.
+:   The system is pre-configured with a limit of **1000 results**.
 
 **Adjustment Options**
-:   Increase or decrease this threshold based on your source volume and browsing preferences. Higher limits provide more comprehensive results, while lower limits improve navigation efficiency.
-
-<Aside type="tip">
-Search is case-insensitive and supports partial matching, allowing you to find "BBC One" simply by typing "bbc".
-</Aside>
+:   Increase or decrease this threshold based on your source volume and browsing preferences (capped at 5000). Results are **virtualized**, so even large values stay smooth. The same limit applies to channel search, custom group search, and the calendar channel selector.

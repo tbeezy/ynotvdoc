@@ -1,0 +1,191 @@
+---
+title: Settings Reference
+description: Every settings tab and what each setting does
+---
+
+import {
+  Tabs,
+  TabItem,
+  Aside
+} from '@astrojs/starlight/components';
+
+Open Settings with the **`,`** key or the cogwheel icon. Each tab below mirrors a section in the Settings sidebar. Settings marked *(restart)* take effect after the app restarts.
+
+<Tabs>
+<TabItem label="Sources">
+
+Add and manage your IPTV providers. [Full guide →](./sources/)
+
+- **Playlist Sources** — add **M3U**, **Xtream Codes**, or **Stalker Portal** sources. Each source card shows channel/movie/series counts, connections used, and expiry. Per source you can set: backup URLs (auto-swap on failure), backup credentials/MACs, a custom **User-Agent**, an **EPG URL** (plus additional waterfall EPG URLs), EPG time offset, **LiveTV Only / VOD Only** sync scope, and **custom refresh intervals** overriding the global schedule.
+- **EPG Sources** — **Global EPG Links** shared across sources (downloaded once, fill only channels missing EPG), linked sources, cached EPG search, and matched-channel views.
+- **Data Refresh** — global TV guide and VOD refresh intervals, and how many sources sync per batch.
+- **Global User-Agent** — default UA for all sources that don't set their own.
+
+</TabItem>
+<TabItem label="LiveTV">
+
+Everything about the Live TV / EPG experience. [Full guide →](./live-tv/)
+
+- **EPG Grid** — visible hours (Automatic = 2–5h by width), 12/24-hour **clock format**, show date headers, **resolution filter** button (All/4K/FHD/HD/SD, needs probed channels), **metadata badges** (resolution, FPS, sound, avg bitrate with per-location toggles, "fps" suffix, FHD/HD labels), current-program highlight, EPG shift.
+- **Logo Settings** — logo size (32–56px), rounded edges, auto light-background detection, default background, **smart trim**, tile layout (full-bleed vs padded), prefer EPG logos, icon shape (square/rectangle) globally or per source, and logo caching.
+- **Font Sizes** — channel, category, and source font sizes; EPG preview title/body sizes.
+- **Sort & Channels** — channel sort order (Provider / Alphabetical / Channel Number), category display, sidebar drag-reorder hotkey, "All Channels" category, per-source favorites placement (Global / Per Source / Both).
+- **Search & Filters** — source name in search results, max search results, EPG filter.
+- **Live View & Player** — preview panel options, mini media bar, channel info overlay, EPG view layout (Traditional / Alternate), transparent guide settings (height, opacity, hide top row, show on zap).
+- **Widgets & Scales** — overlay widget scale/opacity, sports scores overlay, recent channels, custom group widgets.
+
+</TabItem>
+<TabItem label="Playback">
+
+MPV playback engine and media behavior. [Full guide →](./playback/)
+
+- **MPV Player** — **Playback Engine** (Standalone Sidecar mpv.exe default, or Embedded libmpv — restart required), hardware acceleration toggle (`--hwdec=auto --vo=gpu`), **HDR-to-SDR tonemapping** + [HDR] quick toggle, **picture quality profiles** (Smooth / Balanced / Maximum), and custom **MPV Parameters**.
+- **Auto-Reconnect** — event-based reconnect, **stall detection watchdog** with timeout, max retry attempts. At least one detection must stay enabled for retries/failover.
+- **Cast / DLNA** — Google Cast discovery and `.ts → .m3u8` rewrite for casting.
+- **Popout Player** — stop main player when popout opens, always on top, extra popout MPV parameters.
+- **Skip Intro** — IntroDB-powered auto-skip and button duration.
+- **Catch-Up** — start/end padding and continue-playing-past-end (up to 12h) for timeshift programs.
+- **VOD Playback** — auto-play next episode, blur unwatched episodes, scrollwheel seek, source badges.
+
+</TabItem>
+<TabItem label="Metadata">
+
+TMDB and poster metadata.
+
+- **TMDB** — your free **TMDB API read access token** (highly recommended; enables posters, ratings, plots, genres), metadata language picker, and **Streaming Catalogs** rows for Stremio and Nuvio home pages.
+- **RPDB** — RatingPosterDB integration overlaying **rating badges** (IMDb, Rotten Tomatoes, etc.) on posters, optional RPDB backdrops (Tier 2+), and badge preferences.
+
+</TabItem>
+<TabItem label="Subtitles & Audio">
+
+Subtitles and sound processing.
+
+- **Subtitles** — SubSource integration (API key), **OpenSubtitles** login (with daily download allowance), default/preferred provider, default language/size/position, embedded-style override, and appearance (color, background, outline) with live preview.
+- **Audio** — **normalize loudness**, audio profiles (e.g. Night mode), surround-to-stereo **downmix**, **maximum volume boost** (100/150/200%), default audio language, and **audio output device** selection.
+
+</TabItem>
+<TabItem label="Strem">
+
+Stremio add-on playback behavior.
+
+- Playback picker mode (choose a stream vs. auto-play first), hover detail cards, caching of add-on fetch results (with expiration), and **Stream Badges** (JSON badge definitions for 4K/HDR/RD+/Torrent/seeder counts).
+
+</TabItem>
+<TabItem label="Nuvio">
+
+Nuvio cloud account & sync.
+
+- Connect your Nuvio account to sync watch history, watchlist, profiles, and add-ons. Includes cloud library cache, Debrid link resolving, **TMDB metadata enrichment**, profiles, and **homepage layout customization** (which catalog rows appear, hide unreleased).
+
+</TabItem>
+<TabItem label="Discord Rich Presence">
+
+Show what you're watching on your Discord profile (requires the Discord desktop app). Toggle **Show on Discord**, hide the title, show while paused/browsing, show poster, and show elapsed time. [Full guide →](./integrations/)
+
+</TabItem>
+<TabItem label="Theme">
+
+Visual themes and fonts.
+
+- Choose from 40+ built-in themes (dark/light, neon, glassmorphism), **OLED Black Background** (pure-black surfaces on dark themes), custom theme editor with live preview, custom accent colors, background style/bulbs, and custom font upload.
+
+</TabItem>
+<TabItem label="UI">
+
+Interface appearance and behavior.
+
+- **Language** — one of 24 UI languages.
+- Window default size and whether to save size on exit, UI scaling, typography/font, media control design (Clean/Borderless vs Legacy), volume % display, channel info overlay customization, minimize to tray, autohide overlay timer, scrollbar width override, and OLED black.
+
+</TabItem>
+<TabItem label="Optimization">
+
+Performance tuning for lower-end hardware.
+
+- **Hardware Acceleration** — GPU offloading of UI compositing and glass animations.
+- **Theme Optimization** — disable backdrop blur, reduce visual effects while scrolling, **Flat Chrome** (solid background instead of liquid-glass).
+- **EPG Optimization** — EPG loading and guide performance options.
+
+</TabItem>
+<TabItem label="Navigation">
+
+Which UI elements appear.
+
+- Show/hide **titlebar tabs** (Live TV, Movies, Series, Strem, Nuvio, Sports, DVR, Calendar, etc.), **EPG toolbar buttons** (Manage Channels, Refresh, EPG Shift, Playlist Editor, Failover Group), sidebar categories (All Channels, Favorites, Watchlist, Recently Viewed), and VOD sidebar tabs.
+
+</TabItem>
+<TabItem label="Startup">
+
+What happens on launch.
+
+- **Startup View** — which page opens first.
+- **Remember last channels** — save active streams per multiview slot.
+- **Reopen last on startup** — auto-tune back into your last watched streams (restart).
+
+</TabItem>
+<TabItem label="Trakt">
+
+Scrobble playback and browse your Trakt library. Connect via device code + PIN, **Enable Live Scrobbling**, and configure **Trakt catalogs** (Resume Watching, History, Watchlist, custom lists) inside Stremio/Nuvio mode. [Full guide →](./integrations/)
+
+</TabItem>
+<TabItem label="Simkl">
+
+Scrobble movies and series to Simkl in real time via the simkl.com/pin flow, with live scrobbling toggle and disconnect. [Full guide →](./integrations/)
+
+</TabItem>
+<TabItem label="Cache">
+
+Cache-based time shift.
+
+- **Cache Time Shift** — MPV keeps a rolling in-memory buffer of the live stream so you can rewind/ff within the cached window (takes effect on restart).
+- **Live Now Buffer Offset** — seek this many seconds behind live when pressing "Go Live" to avoid buffer stalls.
+- EPG cache size, logo cache size, and cache clearing (EPG-only or full).
+
+</TabItem>
+<TabItem label="Security">
+
+Network security.
+
+- **SSRF protection** — blocks requests to local network addresses by default to stop malicious playlists probing your internal network. **Allow LAN** only if your provider runs locally (Plex, Jellyfin, NAS) and you trust the source.
+
+</TabItem>
+<TabItem label="Proxy">
+
+SOCKS5 proxy for all app traffic (streams, EPG, metadata, VOD). Enable toggle, server host/port (DNS-safe `socks5h://` by default), and diagnostics to verify your public IP matches the proxy location.
+
+</TabItem>
+<TabItem label="Debug">
+
+Diagnostics.
+
+- **Debug logging** — verbose mpv/renderer/main-process logs written to a file (slightly impacts performance); log retention in days with auto-cleanup on startup.
+
+</TabItem>
+<TabItem label="Shortcuts">
+
+Rebind every keyboard action (playback, navigation, interface, layout) by clicking a shortcut and pressing a key or mouse button. Reset to defaults anytime. [Full guide →](./shortcuts/)
+
+</TabItem>
+<TabItem label="Controllers & Remote">
+
+Gamepad, keyboard-as-controller, and phone remote.
+
+- **Spatial navigation**, deadzone, hold-repeat delay/speed, background listening, **button mapping** with live visualizer, **Button Combinations** (chords with L1/R1/L2/R2), **Keyboard as Controller** key bindings, and the **Phone Remote** server (QR pairing) with the remote customizer (skins, tabs, corner buttons, quick actions). [Full guide →](./controllers-phone-remote/)
+
+</TabItem>
+<TabItem label="Export / Import">
+
+Back up and restore your setup.
+
+- **Export / Import** — full backup file (sources, settings, customizations, watch history, local library, folders, logo overrides).
+- **Automated Backup** — enable periodic backups (hourly → weekly), max backups kept (1–20), custom folder, and "Back up now".
+
+</TabItem>
+<TabItem label="About">
+
+App info and updates.
+
+- Version, documentation link, Discord community, **Check for Updates**, changelog, and the **yt-dlp version checker/updater** (powers YouTube trailers).
+
+</TabItem>
+</Tabs>

@@ -50,3 +50,18 @@ The **EPG Search** feature enables you to:
 - Search through available TVG-IDs across all configured sources
 - Assign the channel to a different EPG source by selecting an alternative TVG-ID
 - When **All Sources** is selected, you can map the channel to EPG data from any available source in your configuration
+
+### Per-Channel EPG Source Override
+
+Using EPG Search, a channel's EPG can be **overridden to pull data from a different LiveTV source** — for example, giving a channel a TVG-ID from a provider whose guide is more accurate. The override **persists across every subsequent sync**, so re-syncing won't reset it. The **Source** tab of the editor also lets you browse a source's channels and jump straight to editing any of them (channels with active overrides are marked with a dot).
+
+### Automatch Missing
+
+The **Automatch Missing** tab matches every channel that doesn't have an EPG assignment in one batch:
+
+- **Scope** — match a single source, or **All Sources** at once.
+- **Match Against** — match by **M3U names** (your channel list) or raw **EPG names** from the XMLTV data (for providers that don't include TVG-IDs).
+- **Categories** — narrow to all categories in the source or a specific set.
+- **Minimum Match Threshold** — only auto-apply matches that score at least this percentage; lower values produce more matches but less accuracy.
+
+Run **Auto-Match Missing in Source** and watch the progress as channels are scored and matched, with a matched/total count and skipped channels. Matches at or above the threshold are applied automatically — individual fine-tuning can still be done in the Channel tab afterward.

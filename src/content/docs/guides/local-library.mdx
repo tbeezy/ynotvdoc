@@ -1,0 +1,82 @@
+---
+title: Local Library
+description: Import your local movie and series folders, match them with TMDB metadata, and play them alongside your IPTV content
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+The **Local Library** lets you add folders of movies and series from your computer and play them in ynoTV alongside your IPTV content. ynoTV scans your files, identifies what they are, and enriches them with **TMDB metadata** (posters, ratings, cast, overviews) so they look and behave like everything else in the app — with watch progress, favorites, playlists, and search.
+
+<Aside type="note">
+ynoTV only **remembers the folder paths** — nothing is copied, moved, or re-encoded. Your files stay exactly where they are.
+</Aside>
+
+## Adding Folders
+
+Open the **Local** category in the sidebar and click **Add folder** (or the empty-state **Choose folder** button). You can add:
+
+- **Movies folder** — a folder of film files.
+- **Series folder** — a folder laid out as **one subfolder per show**, with optional `Season XX` subfolders inside.
+
+After you pick a folder, ynoTV scans it for video files, parses the titles from the filenames, and matches them against **TMDB**.
+
+### NFO vs Online mode
+
+When a folder contains **`.nfo` metadata files**, ynoTV asks how you want to import:
+
+- **Use .nfo & Local Artwork** — the fastest option. Reads your existing sidecar NFOs and local posters/backdrops, with TMDB as a fallback for missing info.
+- **Scan Online with TMDB** — parses filenames and fetches fresh artwork, ratings, cast, and overviews from TMDB.
+
+<CardGrid>
+  <Card title="Manage folders" icon="folder">
+    View, rescan, or remove your library folders at any time from the Manage Local Folders dialog.
+  </Card>
+  <Card title="Auto-sync" icon="refresh-cw">
+    Folders are re-scanned automatically — on startup and every 15 minutes while the app is open — so new files you drop in appear on their own.
+  </Card>
+  <Card title="Export .nfo" icon="file-output">
+    Export .nfo and artwork for your matched titles, handy for portability between media players.
+  </Card>
+</CardGrid>
+
+## Matching & Review
+
+Titles that couldn't be confidently identified land in the **Review** flow. A banner shows how many titles need attention, and the **Review Unmatched** dialog lets you handle them in bulk:
+
+- **Match Selected** — search TMDB for the correct title, year, poster, and plot, then apply the match to the selected items.
+- **Match as Series** — identify a group of files as episodes of a series.
+- **Identify** — for individual files, pick the right title from TMDB search results.
+- **Skip** — keep the item in your library but stop trying to match it.
+- **Remove** — take the item out of your library.
+
+You can also fix a single match from a title's detail view, and re-run matching any time.
+
+<Aside type="tip">
+Matching and metadata refresh need a **TMDB API key** — add one in **Settings → TMDB** for the full experience (search, artwork, ratings). Without a key you can still browse and play your local files.
+</Aside>
+
+## Managing Your Library
+
+The Local tab gives you full control over the scanned collection:
+
+- **Filter & sort** — by Movies / Series / All, favorites only, or "no metadata" (titles whose posters or metadata never loaded); sort by Recently Added, Name, Highest Rated, Release Year, or Last Watched.
+- **Refresh Metadata** — re-fetch metadata for selected titles (or **Refresh All**) to fix missing posters or plots.
+- **Mark Watched / Unwatched** — batch mark items as watched; progress also updates automatically as you play.
+- **Remove** — delete selected items from the library (the files on disk are untouched).
+- **Playlists & favorites** — add local titles to your VOD playlists or favorite them, exactly like IPTV content.
+
+## Playback & Progress
+
+Local titles play with the full ynoTV player — and **watch progress is tracked per title** (and per episode for series), including resume position, the Recently Watched rail, and the Last Watched sort. Playback of local files works with **Skip Intro** detection, subtitle support, and your normal playback engine settings.
+
+<Aside type="note">
+The Local category can be hidden from the sidebar — toggle **Settings → Navigation → Local** (Show the "Local" library category in the sidebar).
+</Aside>
+
+## Backups
+
+Your local library — both the scanned entries and the configured folder paths — is included in **Settings → Import/Export** backups, so restoring a backup on a new machine brings your library catalog back with it. The files themselves stay on your disks; only the metadata and folder references are backed up.

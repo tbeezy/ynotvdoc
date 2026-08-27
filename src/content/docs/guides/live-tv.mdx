@@ -11,75 +11,99 @@ import {
 
 **Live TV** is the core of ynoTV. Stream your favorite channels, browse categories, and manage multiple views all in one place.
 
-## Playback Experience
+## EPG Grid & Display
 
-ynoTV uses a custom high-performance player engine built on top of **mpv** for low-latency, hardware-accelerated playback.
+### Metadata Badges
 
-## EPG Display Customization
+**Settings → Live TV → EPG Grid → Metadata Badges** controls the quality badges shown on channel rows in the EPG grid. These are populated automatically by the [Channel Stream Probe](./stream-probe/) — channels that haven't been probed won't have badge data yet.
 
-Customize the Electronic Program Guide interface to enhance visibility and control.
+- **Resolution** — 4K / 1080p / 720p / SD.
+- **FPS** — frame rate (e.g. 60).
+- **Sound** — audio channels (e.g. Stereo).
+- **Avg Bitrate** — average video and audio bitrates, with a **Location** setting choosing where they show: EPG, Channel Info Overlay, Search Results, Failover, or Sports Channel Linking.
 
-### Enhanced Program Highlight
+Two display options refine the labels:
 
-Improve the visual distinction of currently airing programs in the EPG for better readability.
+- **Show "fps" suffix** — display "60fps" instead of just "60".
+- **Show resolution as FHD/HD** — display 1080p as **FHD** and 720p as **HD** instead of the numeric forms.
 
-**Configuration Path**
-:   Navigate to **Settings → Live TV → EPG Display**
+### Resolution Filter
 
-**Enable Darker Highlight**
-:   Activate the option to deepen the highlight color on current program blocks, providing stronger visual contrast against non-airing content
+**Settings → Live TV → EPG Grid → Resolution filter** adds a resolution filter button to the EPG toolbar (to the left of the A-Z jump). Picking a resolution — **All, 4K, FHD, HD, SD** — shows only channels of that resolution in the guide.
 
-### Mini Media Control Bar
+<Aside type="note">
+The resolution filter only works for channels that have been probed and have metadata badges — run the [Channel Stream Probe](./stream-probe/) first to fill in the data.
+</Aside>
 
-Add playback controls directly to the EPG preview window for convenient operation without switching views.
+### Transparent Guide Mode
 
-**Configuration Path**
-:   Navigate to **Settings → Live TV**
+Press **Z** to toggle **transparent guide mode** — the EPG/channel list becomes a translucent overlay on top of the playing video. The **Settings → Live TV → EPG Display → Transparent EPG Overlay** section controls it:
 
-**Enable Mini Media Bar**
-:   Toggle the **Mini Media Bar for EPG Preview** to display play/pause and volume controls overlay on the preview video
+- **Overlay Height** — how much of the screen the overlay covers (25–100%).
+- **Hide Top Row** — hide the time, manage, refresh, shift, and Now buttons so the channel list fills the space (useful to avoid duplicate controls when the overlay shows).
+- **Display on Channel Zap** — briefly show the overlay when zapping channels (channel up/down), then auto-hide.
+- **EPG Overlay Opacity** — transparency of the overlay (0–100%).
+- **Category Sidebar Opacity** — transparency of the category sidebar in transparent mode.
 
-### Alternative EPG Layout
+### More EPG Options
 
-Switch between traditional and modern EPG layouts based on your preference.
+- **EPG Visible Hours** — how many hours are visible in the grid (Automatic uses 2–5 hours dynamically based on width).
+- **EPG Clock Format** — 12-hour (AM/PM) or 24-hour clock across the EPG, search, watchlist, and recordings.
+- **Show Date in EPG** — display the date alongside the time markers in the timeline header.
+- **Highlight current playing** — an accent-colored border outlines the currently playing channel row.
+- **Darker current program highlight** — deepens the highlight of currently airing program blocks.
+- **EPG Shift** — move the EPG forward or backward by an hour (also bindable to controller buttons).
 
-**Configuration Path**
-:   Navigate to **Settings → Live TV → EPG View Layout**
+### Navigating the Grid
 
-**Select Layout**
-:   Choose **Alternate EPG View** to enable a different interface arrangement
+- **Jump to Letter (A-Z)** — tap a letter in the toolbar to jump to channels starting with that letter.
+- **Alternative EPG Layout** — switch between the traditional and alternate (cinematic) EPG views with **E**.
+- **Search** — instantly find channels by name or provider category.
 
-**Quick Toggle**
-:   Press **E** to instantly switch between the Traditional and Alternate EPG views
+## Channel List & Categories
 
-## Navigating Live TV
+### Sorting
 
-### Channel List & Categories
-The **Live TV** view summarizes all available content for your currently active source.
+**Settings → Live TV → Sort & Channels** configures how channels and categories are ordered:
 
-1. **Browse Categories**: Use the sidebar to jump to different genres (Sports, News, Movies, etc.).
-2. **Search**: Instantly find channels by name or provider category.
-3. **Favorites**: Mark any channel as a favorite for quick access from the **Watchlist**.
+- **Channel Sort Order** — Provider (M3U order), Alphabetical (A-Z), or Channel Number (Xtream `num` / M3U `tvg-chno`, with numberless channels at the end sorted alphabetically).
+- **Category Display** — Default (provider order or custom order from Manage Categories) or Alphabetical (A-Z).
+- **Include All Channels to Playlist** — show an "All Channels" category at the top of each source displaying all enabled channels from it.
 
-### Multiple Views
-Watch up to four streams at once with our [Multiview Layouts](./multiview/).
+### Favorites
 
-## Interface Controls
+**Settings → Live TV → Favorites** controls where favorited channels appear in the sidebar: **Global** (a single Favorites list at the top), **Per Source** (a Favorites entry nested inside each provider), or **Global + Per Source**.
 
-### Channel & Category List
-Access your complete channel lineup through multiple methods:
+### Category Folders
 
-**Navigation Button**
-:   Click **Live TV** in the header to open the channel and category panel
+Group categories under custom **folders** to organize huge playlists. Right-click a source → **Manage Categories**, then:
 
-**Keyboard Shortcut**
-:   Press **L** (default) for instant access to the channel list
+1. **Create Folder** — name it (e.g. "USA", "Sports", "News").
+2. **Assign categories** to the folder — select categories and use **Move Selected to Folder**, or use the per-category folder dropdown.
+3. **Drag to reorder** folders, or use the move up/down buttons. Rename and delete anytime (deleting a folder just returns its categories to the root level).
 
-**Toggle Panels**
-:   - **C** — Show or hide the Categories sidebar
-   - **G** — Show or hide the Electronic Program Guide
+### Sidebar Reordering
 
-### Preview Screen Management
+Hold the configured modifier key (default **Ctrl**) while clicking and dragging to reorder sources and categories in the sidebar — the modifier is configurable in **Settings → Live TV → Sort & Channels → Sidebar Drag Reorder Hotkey** (Ctrl, Alt, Shift, Meta, or None for always-draggable).
+
+## Logos
+
+**Settings → Live TV → Logo Settings** customizes how channel logos look across the guide and channel list:
+
+- **Logo Size** — Small (32px), Default (42px), Large (48px), or XL (56px).
+- **Round Logo Edges** — rounded corners or sharp square tiles.
+- **Auto Light Background Detection** — analyzes logo luminance and renders dark logos on a light tile for contrast.
+- **Default Logo Background** — Auto / Light / Dark, used for logos without their own setting (per-logo backgrounds set in the EPG Editor take priority).
+- **Smart Trim Logos** — crops each logo's baked-in transparent padding so it fills the tile edge-to-edge without cutting off content.
+- **Logo Tile Layout** — Full-Bleed edge-to-edge logos (Classic) or inset Padded Tiles.
+- **Prefer EPG logos globally** — channels with EPG data display the matched EPG channel's logo instead of the playlist's.
+- **Display Icons** — some providers use wide/horizontal icons; choose Square (Default) or Rectangle (Horizontal) globally or **per source** via overrides.
+- Logo caching options control how much artwork is cached locally.
+
+A **live logo style preview** shows your current settings as you adjust them.
+
+## Preview Screen Management
+
 Customize the preview window to your viewing preference:
 
 **Resizing**
@@ -92,10 +116,38 @@ Customize the preview window to your viewing preference:
 :   - Double-click any channel in the list to close the guide and display the stream in fullscreen mode within the application
    - Double-click the preview video directly to achieve the same result
 
+### Mini Media Control Bar
+
+Add playback controls directly to the EPG preview window for convenient operation without switching views — toggle the **Mini Media Bar for EPG Preview** in **Settings → Live TV** to show play/pause and volume controls overlaid on the preview video.
+
+### EPG Preview Font Sizes
+
+Adjust the title and body text sizes used in the EPG preview panel under **Settings → Live TV → EPG Preview Font Sizes**, with a live preview.
+
+## Multiple Views
+
+Watch up to four streams at once with [Multiview Layouts](./multiview/).
+
+## Interface Controls
+
+### Channel & Category List
+
+Access your complete channel lineup through multiple methods:
+
+**Navigation Button**
+:   Click **Live TV** in the header to open the channel and category panel
+
+**Keyboard Shortcut**
+:   Press **L** (default) for instant access to the channel list
+
+**Toggle Panels**
+:   - **C** — Show or hide the Categories sidebar
+   - **G** — Show or hide the Electronic Program Guide
+
 ### Context Menu Options
 
 **Source Management**
-:   Right-click any source in the category list to access **Manage Categories**, allowing you to enable or disable specific category groupings for streamlined browsing
+:   Right-click any source in the category list to access **Manage Categories**, allowing you to enable or disable specific category groupings and manage folders
 
 **Channel Actions**
 :   Right-click any channel to reveal a contextual menu with the following capabilities:
@@ -103,6 +155,7 @@ Customize the preview window to your viewing preference:
    - **Quick Record** — Start an immediate recording using default settings
    - **Add to Custom Group** — Organize channels into personalized collections
    - **Copy Stream URL** — Copy the direct stream address to your clipboard
+   - **Probe Category Streams** — Launch the [Channel Stream Probe](./stream-probe/) scoped to that category
 
 <Aside type="tip">
   Right-click any channel in the list to access the **EPG Editor**, **Source Settings**, or **Recording** options.

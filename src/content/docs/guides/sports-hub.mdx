@@ -1,30 +1,62 @@
 ---
-title: Sports Hub
-description: Tracking live scores, schedules, and team stats in ynoTV
+title: Sports
+description: Tracking live scores, schedules, team channels, and live game streams in ynoTV
 ---
 
 import {
   Aside
 } from '@astrojs/starlight/components';
 
-The Sports Hub is a dedicated dashboard for sports enthusiasts, aggregating live scores, upcoming schedules, and league-specific data from ESPN.
+**Sports** is a dedicated dashboard for sports enthusiasts, aggregating live scores, upcoming schedules, and league-specific data from ESPN.
 
 ## Viewing Features
 
 ### Live Games Search
 
-The Sports Hub provides integrated search functionality on match cards in both the **Live Now** and **Upcoming** tabs, enabling quick access to available broadcast sources:
+The Sports page provides integrated search functionality on match cards in both the **Live Now** and **Upcoming** tabs, enabling quick access to available broadcast sources:
 
 **Search Teams**
 :   Opens the search interface with both team names pre-populated, allowing you to browse all available channels and manually select your preferred broadcast.
 
 **Show Search Results**
-:   Displays matched channels directly on the match card, enabling one-click access to the broadcast without navigating away from the Sports Hub.
-
-This streamlined workflow ensures you can locate and launch live sports coverage efficiently, whether you prefer browsing all available options or selecting from curated results.
+:   Displays matched channels directly on the match card, enabling one-click access to the broadcast without navigating away from the Sports page.
 
 ### In-Page Streaming
-Click the **Stream Icon** next to the Sports Hub header to pin your current live stream directly onto the sports dashboard. This allows you to track scores across multiple leagues while never losing sight of the action—similar to the EPG view.
+Click the **Stream Icon** next to the Sports header to pin your current live stream directly onto the sports dashboard. This allows you to track scores across multiple leagues while never losing sight of the action—similar to the EPG view.
+
+## Team Channels
+
+**Team Channels** lets you link teams to specific channels so you can watch a game with **one tap** — no searching each time. Open the Team Channels manager (from the Sports page or Sports settings), pick a league, and link channels to teams.
+
+Each team link has one **Primary** channel plus optional **Backup** channels:
+
+- **+ Add Backup** — add more channels to the same team; backups are used when the primary fails.
+- **Set as Primary** — promote any linked channel to primary.
+- **Autoswap dead streams** — automatically switch to the next backup stream when the current team stream drops or stalls.
+
+### Auto-link Teams
+
+Instead of linking by hand, **Auto-link teams** scans your playlists and proposes matches for every team in a league. Configure per-league settings:
+
+- **Matching Strategy** — *Full Team Name* (city + team, highest accuracy), *Smart Match* (full names plus distinct nicknames with city-conflict protection, default), or *Team Nickname Only* (broad).
+- **Playlist Sources** — restrict matching to specific sources, or all enabled sources.
+- **Category Filters** — target all categories, sports only, or a selected subset.
+- **Min Confidence** — 50% (loose) through 90% (strict), default 70% — filters out suggestions below the match score.
+- **Channels per Team** — 1 (primary only) up to 5 (all candidates), so multiple matches are easy to assign as backups.
+
+Run the scan and review the results in the **Suggestions** panel, where each match shows a confidence percentage. Accept matches as **Primary** or **Backup**, accept per-team, or **Accept All + Backups**. Teams can also be linked manually, unlinked individually, or **Unlink All** per league.
+
+<Aside type="tip">
+With teams linked, the [Channel Stream Probe](./stream-probe/) **Sports Linked Channels** scope lets you probe all linked team channels — or narrow to linked channels missing badges.
+</Aside>
+
+## Live Games Sidebar
+
+The **Live Games Sidebar** is a tab on the right edge of the main screen with a pulsing live dot and the count of active games. Click it to slide out a drawer listing every **Live Game**, filterable by league. Clicking a game lists its available streams from your playlists — or opens the full search if none are found — so you can jump straight into the broadcast while keeping scores visible.
+
+### Background Stream Search
+
+While the sidebar is open, ynoTV **pre-searches streams in the background for every game that is live or past its start time**. Searches run **one at a time** through a serialized queue (starting after a short startup delay and once channel sync is idle), so opening a game shows its streams instantly instead of waiting for a live search — and the queue stays out of the way of your other actions.
 
 ## Personalized Experience
 
@@ -35,6 +67,6 @@ You can follow specific teams to have them appear prominently in the **Teams** t
 3. Mark them as a favorite to track their progress throughout the season.
 
 ### Hub Settings
-Access the **Settings** gear within the Sports Hub to customize your view:
+Access the **Settings** gear within the Sports page to customize your view:
 - **Display Preferences**: Toggle which leagues and stats are shown.
 - **Auto-Update**: The "Live Now" page automatically refreshes every 30 seconds during active games to ensure scores are always current.

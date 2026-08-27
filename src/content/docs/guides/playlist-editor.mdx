@@ -1,0 +1,88 @@
+---
+title: Playlist Editor
+description: Build custom playlists from any sources — merge categories, add individual channels, organize with folders, and export to M3U
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+The **Playlist Editor** is ynoTV's full-featured tool for building your own channel lineups. Unlike Custom Groups (simple channel collections), the Playlist Editor gives you complete control over structure: you can link entire categories, merge categories from different providers, add individual channels into any category, create brand-new custom categories, organize everything into folders, and export the result as an M3U file.
+
+## Opening the Playlist Editor
+
+- **Playlist Editor button** — the toolbar button in the EPG view (hideable under `Settings → Navigation → EPG`).
+- **+ in the Categories sidebar** — the same button used for Custom Groups; create a new playlist here.
+- **Settings → Playlists** — manage and edit your playlists.
+
+The **Playlist List** dialog shows all your custom playlists plus every **media source**, each with actions to **Edit Contents**, **Revert to Default**, **Export .m3u**, and (for custom playlists) rename or delete. Drag entries to reorder them in the list.
+
+## The Editor Layout
+
+The editor has two panels:
+
+- **Left: Search & Browse Sources** — browse any source's categories and channels, or search across all sources.
+- **Right: Playlist Contents** — the playlist's categories and channels, in your chosen order.
+
+## Building Your Playlist
+
+### 1. Add a Category Link
+
+Click a category in the left panel to **link the whole category** into the playlist. A category link stays **dynamic** — it pulls the source's current channels, so when the provider updates that category, the playlist updates with it (linked channels show as read-only). Links can be:
+
+- **Renamed** — give the linked category a custom name (e.g. "My Sports" instead of the provider's name).
+- **Hidden / Shown** — declutter without removing.
+- **Removed** — unlink the category.
+
+### 2. Mark a Target Category
+
+Click the **Target** icon on any category in the right panel to mark it as the active target. New channels you add from the left panel land in the target category. Click Target again to unmark.
+
+### 3. Add Individual Channels
+
+Select a target category, then click a channel in the left panel (or use the **＋ Channel** button) to insert it. Individual channels are kept separately from dynamic category links and can be reordered, hidden, renamed, or removed at any time.
+
+<Aside type="tip">
+Use category links for feeds you want to stay in sync with the provider, and individual channels for one-off additions — both can live in the same category, with manual channels merged in alongside the dynamic ones.
+</Aside>
+
+### 4. Create Custom Categories
+
+You're not limited to the provider's structure. Use **Create Custom Category** to make a brand-new category inside any source (or a custom playlist), then populate it with channels from anywhere. Custom categories behave exactly like native ones in the guide.
+
+### 5. Combine Categories
+
+The **Combine** action merges all channels from one category into a target category — the classic way to merge "News" from three different providers into a single "All News" category. Select the target (Target icon), then combine the source categories into it.
+
+### 6. Organize with Folders
+
+Keep a long playlist tidy with **category folders**:
+
+- **Create Folder** — name it (e.g. "USA", "Sports", "News").
+- **Assign categories** to a folder with the Folder dropdown on any category.
+- **Rename / Delete** folders anytime (deleting a folder just returns its categories to the root level).
+
+### 7. Reorder
+
+Drag the **⋮⋮ handles** to reorder categories in the playlist and channels within each category. Your custom order is saved and used everywhere the playlist appears.
+
+## Reverting a Source
+
+If you've customized a source playlist and want a clean slate, **Revert to Default** removes all custom-added categories and channels and resets the category ordering back to the provider's original state.
+
+## Exporting to M3U
+
+**Export .m3u** writes the playlist to a standard M3U file — including all your modifications:
+
+- Disabled / hidden channels and categories stay excluded.
+- Custom sort order is preserved.
+- Edited EPG data (TVG-IDs, logos, custom programs) is included.
+- Works for M3U, Xtream, and custom playlists.
+
+The exported file can be re-imported into ynoTV or used in any other player that reads M3U.
+
+<Aside type="note">
+Playlist Editor changes are saved instantly to the local database — there's no explicit "save" step. Hidden playlist items (from deleted or disabled sources) are kept but shown as hidden so nothing is lost if the source returns.
+</Aside>

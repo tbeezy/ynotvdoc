@@ -1,0 +1,87 @@
+---
+title: Integrations
+description: Connect Trakt and Simkl for scrobbling, show what you're watching on Discord, and download subtitles from OpenSubtitles
+---
+
+import {
+  Card,
+  CardGrid,
+  Aside
+} from '@astrojs/starlight/components';
+
+ynoTV connects to your favorite media services so your watching activity follows you outside the app — scrobble progress to **Trakt** or **Simkl**, show what you're playing on **Discord**, and pull subtitles from **OpenSubtitles**.
+
+## Trakt
+
+**Settings → Trakt** connects ynoTV to your Trakt account for scrobbling and browsing your Trakt library.
+
+### Connecting
+
+1. Click **Connect Trakt Account** — ynoTV generates a device code and verification URL.
+2. Go to the URL on any device, enter the PIN code shown, and authenticate.
+3. ynoTV polls for verification automatically and confirms when you're connected.
+
+<CardGrid>
+  <Card title="Live scrobbling" icon="activity">
+    Automatically send watched status and playback updates to Trakt while viewing — start, progress, and completion are tracked as you watch.
+  </Card>
+  <Card title="Resume Watching" icon="play-circle">
+    In-progress movies and episodes from your Trakt playback history.
+  </Card>
+  <Card title="History" icon="history">
+    Items you've watched, with series deduplicated to your latest watched episode.
+  </Card>
+</CardGrid>
+
+### Trakt catalogs
+
+Once connected, you can add Trakt content as browsable catalogs inside **Stremio mode** and **Nuvio mode**. Open **Configure Trakt Strem Catalogs** or **Configure Trakt Nuvio Catalogs** to pick which sections appear:
+
+- **Your Library** — Resume Watching (in-progress items from your playback history), History (everything you've watched), Watchlist, and your custom Trakt lists.
+- Enable or disable each catalog, reorder them, and choose whether they load before or after the add-on catalogs.
+
+<Aside type="note">
+Scrobbling can be toggled independently — keep the connection for catalogs while turning **Enable Live Scrobbling** on or off, and use **Disconnect Trakt Account** to remove the link entirely.
+</Aside>
+
+## Simkl
+
+**Settings → Simkl** scrobbles your movie and series watching progress to your Simkl profile in real time.
+
+### Connecting
+
+1. Click **Connect Simkl Account** — ynoTV requests a PIN code.
+2. Open **simkl.com/pin** and enter the code shown (the code expires on a countdown).
+3. The page updates automatically once you've authorized, and confirms the connection.
+
+Then enable **Live Scrobbling** to automatically send watched status and playback updates to Simkl while viewing. **Disconnect Simkl Account** removes the link.
+
+## Discord Rich Presence
+
+**Settings → Discord Rich Presence** displays what you're watching on your Discord profile — title info, a live progress bar, and show posters. It requires the **Discord desktop app to be running**.
+
+Turn on **Show on Discord** to start broadcasting, and fine-tune the presence:
+
+- **Hide the title** — show "Watching something" with no show name or poster.
+- **Show while paused** — keep the presence visible when playback is paused.
+- **Show while browsing** — display "Browsing ynotv" when nothing is playing.
+- **Show poster** — reveal movie/show artwork (off keeps the title but hides the poster).
+- **Show elapsed time** — display the live progress bar.
+
+<Aside type="tip">
+If the presence isn't appearing, make sure the Discord desktop app is running and logged in — Rich Presence can't connect through the Discord website alone.
+</Aside>
+
+## OpenSubtitles
+
+**Settings → Subtitles & Audio → OpenSubtitles Integration** lets you log in with your OpenSubtitles account and **download subtitles via OpenSubtitles directly in the player's subtitle modal**.
+
+1. Enter your **OpenSubtitles username and password** (create an account if you don't have one).
+2. ynoTV logs you in and shows your username plus your **allowed downloads per day**.
+3. When searching for subtitles in the player, OpenSubtitles appears as a provider.
+
+You can also set OpenSubtitles (or SubSource) as your **Default / Preferred Subtitle Provider** so the subtitle search opens with your favorite service first.
+
+<Aside type="note">
+OpenSubtitles accounts have a daily download quota — the app shows your remaining allowance so you can pace downloads.
+</Aside>
