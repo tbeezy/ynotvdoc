@@ -62,7 +62,19 @@ Access the **Settings** panel (Key: `,`) and navigate to the **Sources** tab to 
 
 Every source can have **additional EPG URLs** as a **Waterfall EPG** — they fill in channels the primary EPG missed, in order. If the primary EPG doesn't cover a channel, ynoTV moves to the next URL in the list, so guide data is as complete as possible. You can also add **backup URLs** for the source itself: if the primary URL fails, backups are tried in order, and a working backup automatically becomes the primary URL.
 
-The **EPG Sources** tab manages **Global EPG Links** — EPG URLs that can be shared across multiple sources. They're downloaded once and applied to all linked sources, only filling channels that don't already have EPG data. Each source also has **EPG Time Offset (hours)** for correcting misaligned guides, and **Advanced EPG Matching** (display-name based matching for external EPGs — slower but more accurate for some providers).
+Each source also has **EPG Time Offset (hours)** for correcting misaligned guides, and **Advanced EPG Matching** (display-name based matching for external EPGs — slower but more accurate for some providers). Global guides are managed in the **EPG Sources** tab — see [Global EPG Links](#global-epg-links-epg-sources-tab) below.
+
+## Global EPG Links (EPG Sources tab)
+
+The **EPG Sources** tab manages **Global EPG Links** — EPG URLs that can be shared across multiple sources and downloaded once.
+
+- **Add / edit** a link in the **My Shared EPG** section — name it, supply the EPG URL, and check **Cache entire EPG locally** to enable manual search/matching inside the EPG Editor.
+- **Link sources** via **Linked Sources** — select which sources use this EPG. A global EPG only fills channels that don't already have EPG data.
+- **Waterfall priority** — use the up/down arrows to reorder links. Higher-priority EPGs fill first; lower ones fill the remaining gaps.
+- **Sync this EPG** downloads it on demand, and **Sync All** refreshes every global EPG at once. After a successful sync each card shows its **channels & programs** count.
+- **View EPG Channels & Matches** opens the **Matched** panel — browse **All EPG Channels**, search channels/matches, and inspect per-channel EPG ID (`tvg-id`) and matched channel info.
+
+Because a global EPG URL is **downloaded once** and shared by all linked sources, providers that share a guide avoid redundant downloads.
 
 ## Per-Source Sync Intervals
 
@@ -73,6 +85,21 @@ Each source can **override the global refresh intervals**:
 
 This is useful when one provider updates its lineup frequently while others rarely change — sync the busy source often and let the quiet ones run on the global schedule. Individual **Sync Channels** and **Sync VOD** buttons also let you refresh a single source on demand.
 
+## Data Refresh
+
+The **Data Refresh** tab configures when live source data is automatically refreshed on app startup — independent of the per-source overrides above.
+
+- **EPG (TV Guide) refresh** — **Manual only**, **Every 1 hour**, 5 min / 30 min / 3 h / 6 h / 12 h / 24 h, **Every 2 days**, or **Every week**. **Manual only** disables automatic refresh entirely.
+- **VOD (Movies & Series) refresh** — the same interval options for VOD metadata.
+- **Simultaneous EPG Syncs** — how many sources to sync in parallel. **0 = all at once** (fastest, recommended when each source is a different provider); lower numbers are gentler on the connection but slower.
+- **Clear Cache** tools — **Clear EPG Cache** (program listings + channel icons + offline Global EPG caches, re-downloaded on next sync) and **Clear All Cached Data** (wipes all cached channel/EPG/VOD data and compacts the database to reclaim disk space — sources, settings, favorites, and playlists are preserved).
+
+## Global User-Agent
+
+The **Global User-Agent** tab sets a default User-Agent string used for **all** LiveTV sources, both when syncing and when playing. A User-Agent defined within an individual source's settings always **overrides** this global default, so the global value acts as a fallback for sources that don't set their own.
+
+The dropdown includes common presets (**VLC**, **TiviMate**, **GSE IPTV**, **IPTV Smarters**) plus **Custom** for pasting your own string.
+
 ## Per-Source Logo Overrides
 
 Beyond the global [Logo Settings](./live-tv/#logos), each source can have its own **Per-Source Overrides** — override icon shape (Square vs. Rectangle/Horizontal) and background per playlist or provider. The **Prefer EPG logos globally** option additionally makes channels with EPG data display the matched EPG channel's logo instead of the playlist's.
@@ -82,6 +109,10 @@ Beyond the global [Logo Settings](./live-tv/#logos), each source can have its ow
 ### Hide / Show Disabled Sources
 
 Use the **Hide Disabled** toggle at the top of the Playlist Sources list to collapse disabled sources out of the view — handy when you have many providers and want to focus on the active ones. The setting is remembered between sessions, and toggling it back reveals them again.
+
+### Default Category Picker
+
+The **Default Category** picker lives in **Settings → Live TV → Channels** and can also target a playlist source. It lets you set which category LiveTV opens to — choose **Last Opened**, a specific category, a **playlist source**, a custom group, Favorites, Watchlist, or **All Channels**. See [Live TV → Default Category](./live-tv/#default-category-startup-view).
 
 ### Advanced Configuration
 For advanced users, each source card offers deep customization:

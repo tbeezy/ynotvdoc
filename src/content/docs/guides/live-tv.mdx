@@ -45,6 +45,25 @@ Press **Z** to toggle **transparent guide mode** — the EPG/channel list become
 - **EPG Overlay Opacity** — transparency of the overlay (0–100%).
 - **Category Sidebar Opacity** — transparency of the category sidebar in transparent mode.
 
+### 3 Column View
+
+**Settings → Live TV → 3 Column View** replaces the EPG time grid with a **3-column layout** — a channel strip on the left, the preview on top-right, and the channel's schedule below it. It's fully **independent of the EPG View Layout setting** (Traditional / Alternate), so you can enable it without touching the time-grid views.
+
+<Aside type="note">
+The 3 Column View is **off by default** and is its own setting — it does not take over the existing EPG View Layout switch, so a user with the alternate time-grid view keeps it.
+</Aside>
+
+The 3 Column View includes:
+
+- **Resizable channel column** — drag the strip's edge to widen/narrow it.
+- **Per-row favorite star** — toggle channels in/out of Favorites directly from the strip.
+- **Metadata badge row** — resolution / FPS / sound / bitrate badges under the channel name (appears when badge settings are enabled; requires probed channels).
+- **Channel search box** — filter the strip live as you type.
+- **"Show older programs"** — on catchup (`tv_archive`) channels, the schedule pane gets a toggle that widens the lookback so you can reach older programs to catch up on.
+- **Auto-scroll follow** — channel up/down and controller D-Pad keep the playing channel centered in the strip.
+
+The channel management buttons (Manage Channels, Refresh, EPG Shift, Playlist Editor, Failover Group, Probe, Embedded, Close) render as a compact toolbar under the preview, with labels that appear on hover.
+
 ### More EPG Options
 
 - **EPG Visible Hours** — how many hours are visible in the grid (Automatic uses 2–5 hours dynamically based on width).
@@ -53,6 +72,7 @@ Press **Z** to toggle **transparent guide mode** — the EPG/channel list become
 - **Highlight current playing** — an accent-colored border outlines the currently playing channel row.
 - **Darker current program highlight** — deepens the highlight of currently airing program blocks.
 - **EPG Shift** — move the EPG forward or backward by an hour (also bindable to controller buttons).
+- **Program Font Size** — adjust the program text size in the EPG grid under **Settings → Live TV → Font Sizes → Program Font Size**, with a live preview.
 
 ### Navigating the Grid
 
@@ -70,9 +90,24 @@ Press **Z** to toggle **transparent guide mode** — the EPG/channel list become
 - **Category Display** — Default (provider order or custom order from Manage Categories) or Alphabetical (A-Z).
 - **Include All Channels to Playlist** — show an "All Channels" category at the top of each source displaying all enabled channels from it.
 
+### Default Category (Startup View)
+
+**Settings → Live TV → Channels → Default Category** chooses which category opens when LiveTV loads. A modal lets you pick:
+
+- **Last Opened Category** — restores the category you last viewed (the default).
+- **A specific category** or **playlist source**.
+- **A custom group**.
+- **Favorites**, **Watchlist**, or **All Channels**.
+
+This is separate from the app's **Startup View** (which page opens on launch) — it controls which *category* LiveTV shows whenever it's opened.
+
 ### Favorites
 
 **Settings → Live TV → Favorites** controls where favorited channels appear in the sidebar: **Global** (a single Favorites list at the top), **Per Source** (a Favorites entry nested inside each provider), or **Global + Per Source**.
+
+### Auto-hide Category Sidebar
+
+**Settings → Live TV → Auto-hide category sidebar** keeps the category sidebar hidden and slides it out over the guide when the mouse reaches the left edge of the screen. It closes automatically after you pick a category or move the mouse away — useful for reclaiming horizontal space on smaller displays or when watching the EPG preview.
 
 ### Category Folders
 
